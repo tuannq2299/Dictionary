@@ -23,6 +23,7 @@ public class TranslateActivity extends AppCompatActivity {
     }
     private String dictionaryEntries(String word) {
         final String language = "en-gb";
+
 //        final String fields = "defintions";
 //        final String strictMatch = "false";
         final String word_id = word.toLowerCase();
