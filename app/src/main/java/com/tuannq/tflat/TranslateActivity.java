@@ -20,6 +20,7 @@ public class TranslateActivity extends AppCompatActivity {
         url = dictionaryEntries(word);
         DictionaryRequest dr = new DictionaryRequest(tvMeaning);
         dr.execute(url);
+
     }
     private String dictionaryEntries(String word) {
         final String language = "en-gb";
