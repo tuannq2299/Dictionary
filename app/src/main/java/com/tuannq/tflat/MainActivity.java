@@ -37,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
     }
     public void requestApiButton(View v){
         if(etSearch.getText().toString().length()>0) {
+
             String word = etSearch.getText().toString().trim();
             Intent intent = new Intent(MainActivity.this, TranslateActivity.class);
             intent.putExtra("word", word);
             startActivity(intent);
+
         }
     }
 
