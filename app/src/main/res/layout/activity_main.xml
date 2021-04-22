@@ -30,7 +30,7 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Search your word"
+            android:hint="English-English Dictionary"
             android:inputType="textPersonName" />
 
         <ImageView
@@ -59,7 +59,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:text="Your word" />
+        android:text="Your favorite word" />
 
     <Button
         android:id="@+id/btnHistory"
