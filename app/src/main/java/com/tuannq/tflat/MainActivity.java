@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 requestApiButton(v);
             }
         });
+        btnVA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestTranslateVi(v);
+            }
+        });
     }
     public void requestApiButton(View v){
         if(etSearch.getText().toString().length()>0) {
@@ -44,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
 
         }
+    }
+    public void requestTranslateVi(View v){
+            Intent intent = new Intent(MainActivity.this, VnActivity.class);
+            startActivity(intent);
     }
 
 }

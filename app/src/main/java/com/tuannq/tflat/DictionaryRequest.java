@@ -19,6 +19,7 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     final String app_key = "a68b0b254a7d42f295118179935bf538";
     String myURL;
     TextView tv;
+
     DictionaryRequest(TextView tv) {
         this.tv= tv;
     }
