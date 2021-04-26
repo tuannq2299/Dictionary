@@ -23,7 +23,7 @@ public class CRUD {
     }
 
     public void insertFavoriteWord(Word w){
-        String query = String.format( "insert into favoriteWords values(null, %s, %s, %s)", w.getWord(), w.getMean(), w.getExamp());
+        String query = String.format( "insert into favoriteWords values(null,' %s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
         database.queryData(query);
     }
     public Word findWord(String word){
@@ -60,7 +60,7 @@ public class CRUD {
 
     public ArrayList<Word> getFavoriteWords(){
         ArrayList<Word> arr = new ArrayList<>();
-        String query = "select * from favoriteWords where isFavorite = 1;";
+        String query = "select * from favoriteWords;";
         Cursor cursor = database.getData(query);
         while(cursor.moveToNext()){
             arr.add(new Word(Integer.parseInt(cursor.getString(0)),cursor.getString(1), cursor.getString(2),cursor.getString(3)));
