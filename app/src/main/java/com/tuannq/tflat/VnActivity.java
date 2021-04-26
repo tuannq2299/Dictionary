@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,6 +41,36 @@ public class VnActivity extends AppCompatActivity {
                 trans.execute(text);
             }
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Toast.makeText(MainActivity.this,"selected",Toa)
+        switch (item.getItemId()) {
+            case R.id.menuSetting:
+                Toast.makeText(VnActivity.this, "Setting selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuSearch:
+                Toast.makeText(VnActivity.this, "Search selected", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuExit:
+                VnActivity.this.finish();
+                break;
+            case android.R.id.home:
+                // todo: goto back activity from here
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
     private static String translate( String text) throws IOException {
         // INSERT YOU URL HERE

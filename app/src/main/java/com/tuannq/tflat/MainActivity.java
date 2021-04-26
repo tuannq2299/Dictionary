@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         //
          words = crud.getAllWords();
         yourWords = crud.getFavoriteWords();
-        Log.d("W", words.get(0).getMean()+words.size());
+//        Log.d("W", words.get(0).getMean()+words.size());
     }
     public void requestApiButton(View v){
         if(etSearch.getText().toString().length()>0) {

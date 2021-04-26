@@ -88,8 +88,10 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
             String rs1;
             rs1 = def.getString(0);
 
-            Log.d("temp","Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
+//            Log.d("temp","Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
             tv.setText("Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
+
+
         }
         catch(Exception e){
             e.printStackTrace();

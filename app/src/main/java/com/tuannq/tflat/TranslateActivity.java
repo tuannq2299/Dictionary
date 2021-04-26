@@ -3,7 +3,10 @@ package com.tuannq.tflat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TranslateActivity extends AppCompatActivity {
 
@@ -20,7 +23,38 @@ public class TranslateActivity extends AppCompatActivity {
         url = dictionaryEntries(word);
         DictionaryRequest dr = new DictionaryRequest(tvMeaning);
         dr.execute(url);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        // Toast.makeText(MainActivity.this,"selected",Toa)
+        switch (item.getItemId()){
+            case R.id.menuSetting:
+                Toast.makeText(TranslateActivity.this,"Setting selected",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuSearch:
+                Toast.makeText(TranslateActivity.this,"Search selected",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuExit:
+                TranslateActivity.this.finish();
+                break;
+            case android.R.id.home:
+                // todo: goto back activity from here
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
     private String dictionaryEntries(String word) {
         final String language = "en-gb";
