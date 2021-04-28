@@ -1,6 +1,7 @@
 package com.tuannq.tflat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +29,7 @@ public class VnActivity extends AppCompatActivity {
     ImageView ivSearch;
     TextView tvTranslate;
     Translator VnTrans;
+    MaterialToolbar topAppBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NetworkOnMainThreadException {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class VnActivity extends AppCompatActivity {
         etWord = findViewById(R.id.etWord_EN_VN);
         ivSearch = findViewById(R.id.ivSearch_VI);
         tvTranslate = findViewById(R.id.tvTranslate_VI);
+        topAppBar = findViewById(R.id.topAppBarVN);
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,37 +46,35 @@ public class VnActivity extends AppCompatActivity {
                 trans.execute(text);
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        // Toast.makeText(MainActivity.this,"selected",Toa)
-        switch (item.getItemId()) {
-            case R.id.menuSetting:
-                Toast.makeText(VnActivity.this, "Setting selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menuSearch:
-                Toast.makeText(VnActivity.this, "Search selected", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menuExit:
-                VnActivity.this.finish();
-                break;
-            case android.R.id.home:
-                // todo: goto back activity from here
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+            }
+        });
+
+        topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch(item.getItemId()){
+                    case R.id.favorite:
+                        Toast.makeText(VnActivity.this,"Favorite",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.search:
+                        Toast.makeText(VnActivity.this,"Search",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.more:
+                        break;
+                    case R.id.menuSetting:
+                        Toast.makeText(VnActivity.this,"Setting",Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+                return false;
+            }
+        });
+}
     private static String translate( String text) throws IOException {
         // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbwWT9BNzQRMANmu-hgLYwxYB0fOWKd-1L76A0O5laLhiCcz5bfV2QJCovtOHve5SlVx/exec" +

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TFlat">
+        android:theme="@style/Theme.TFlat.NoActionBar">
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"

@@ -11,6 +11,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,7 +21,7 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     final String app_key = "a68b0b254a7d42f295118179935bf538";
     String myURL;
     TextView tv;
-
+    MaterialToolbar topAppBar;
     DictionaryRequest(TextView tv) {
         this.tv= tv;
     }

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Setting" android:id="@+id/menuSetting"></item>
-    <item android:title="Search" android:id="@+id/menuSearch"></item>
-    <item android:title="Exit" android:id="@+id/menuExit"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite"
+        android:icon="@drawable/favorite"
+        android:title="@string/favorite"
+        android:contentDescription="@string/favorite"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search"
+        android:title="@string/search"
+        android:contentDescription="@string/search"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/more"
+        android:title="@string/more"
+        android:contentDescription="@string/more"
+        app:showAsAction="never">
+        <item android:title="Setting" android:id="@+id/menuSetting"></item>
+    </item>
+
 </menu>
