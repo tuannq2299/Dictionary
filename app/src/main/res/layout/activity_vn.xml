@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/menu"
-            app:navigationIcon="@drawable/menu"
+            app:navigationIcon="@drawable/back"
             app:title="@string/word" />
 
     </com.google.android.material.appbar.AppBarLayout>

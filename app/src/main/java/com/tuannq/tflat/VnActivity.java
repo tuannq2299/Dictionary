@@ -3,6 +3,7 @@ package com.tuannq.tflat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
 import android.util.Log;
@@ -50,7 +51,9 @@ public class VnActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(VnActivity.this,TabActivity.class);
+                startActivity(intent);
+                VnActivity.this.finish();
             }
         });
 
