@@ -6,12 +6,14 @@
         android:id="@+id/favorite"
         android:icon="@drawable/no_favorite"
         android:title="@string/favorite"
+        android:checked="false"
         android:contentDescription="@string/favorite"
         app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/search"
+
         android:icon="@drawable/search"
         android:title="@string/search"
         android:contentDescription="@string/search"

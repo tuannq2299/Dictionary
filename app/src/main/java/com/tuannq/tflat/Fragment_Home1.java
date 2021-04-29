@@ -44,6 +44,7 @@ public class Fragment_Home1 extends Fragment {
         btnYW=view.findViewById(R.id.btnYW);
         btnVA=view.findViewById(R.id.btnVA);
         ivSearch.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 requestApiButton(v);

@@ -3,8 +3,10 @@ package com.tuannq.tflat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +48,15 @@ public class TranslateActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.favorite:
-                        Toast.makeText(TranslateActivity.this,"Favorite",Toast.LENGTH_SHORT).show();
+                        boolean mstate = !item.isChecked();
+                        if(mstate){
+                            item.setChecked(mstate);
+                            item.setIcon(R.drawable.favorite);
+                        }
+                        else{
+                            item.setChecked(mstate);
+                            item.setIcon(R.drawable.no_favorite);
+                        }
                         break;
                     case R.id.search:
                         Toast.makeText(TranslateActivity.this,"Search",Toast.LENGTH_SHORT).show();
@@ -56,7 +66,6 @@ public class TranslateActivity extends AppCompatActivity {
                     case R.id.menuSetting:
                         Toast.makeText(TranslateActivity.this,"Setting",Toast.LENGTH_SHORT).show();
                         break;
-
                 }
                 return false;
             }
