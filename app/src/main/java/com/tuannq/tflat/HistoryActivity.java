@@ -28,7 +28,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        topAppBar = findViewById(R.id.historyBack);
+        topAppBar = findViewById(R.id.historyTop);
         topAppBar.setTitle("History");
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

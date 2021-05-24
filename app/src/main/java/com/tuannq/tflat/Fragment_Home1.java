@@ -86,7 +86,6 @@ public class Fragment_Home1 extends Fragment {
             Intent intent = new Intent(getActivity(), TranslateActivity.class);
             intent.putExtra("word", word);
             startActivity(intent);
-
         }
     }
     public void requestTranslateVi(View v){

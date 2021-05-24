@@ -58,7 +58,6 @@ public class TranslateActivity extends AppCompatActivity {
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 switch(item.getItemId()){
                     case R.id.favorite:
                         boolean mstate = item.isChecked();
@@ -82,14 +81,10 @@ public class TranslateActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.search:
-                        topAppBar.setVisibility(View.INVISIBLE);
+                        Intent intent=new Intent(TranslateActivity.this,SearchActivity.class);
+                        startActivity(intent);
+                        break;
 
-                        break;
-                    case R.id.more:
-                        break;
-                    case R.id.menuSetting:
-                        Toast.makeText(TranslateActivity.this,"Setting",Toast.LENGTH_SHORT).show();
-                        break;
                 }
                 return false;
             }

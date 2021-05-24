@@ -67,11 +67,7 @@ public class VnActivity extends AppCompatActivity {
                     case R.id.search:
                         Toast.makeText(VnActivity.this,"Search",Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.more:
-                        break;
-                    case R.id.menuSetting:
-                        Toast.makeText(VnActivity.this,"Setting",Toast.LENGTH_SHORT).show();
-                        break;
+
 
                 }
                 return false;
