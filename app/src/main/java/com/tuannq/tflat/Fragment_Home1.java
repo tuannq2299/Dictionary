@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -96,7 +95,7 @@ public class Fragment_Home1 extends Fragment {
     }
 
     public void onClickHistory(View v){
-        Intent intent = new Intent(getActivity(), history.class);
+        Intent intent = new Intent(getActivity(), HistoryActivity.class);
         String str = (new Gson()).toJson(words);
         intent.putExtra("arrW", str);
 
@@ -104,7 +103,7 @@ public class Fragment_Home1 extends Fragment {
     }
 
     public void onClickYW(View v){
-        Intent intent= new Intent(getActivity(), favorite.class);
+        Intent intent= new Intent(getActivity(), FavoriteActivity.class);
         String str = (new Gson()).toJson(yourWords);
         intent.putExtra("arrW", str);
         startActivity(intent);

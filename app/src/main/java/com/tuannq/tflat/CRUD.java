@@ -42,10 +42,23 @@ public class CRUD {
     }
 
     public boolean checkFavorite(String word){
-        String query = "select * from favoriteWords where word = "+"'"+word+"';";
+        word=word.trim();
+        String query = "select * from favoriteWords where word LIKE '%"+word+"%';";
         Cursor cursor = database.getData(query);
         if(cursor.moveToNext()) return true;
         return false;
+    }
+    public void updateFavorite(Word word,int i){
+        String w= word.getWord();
+        if(i==0){
+            String query = "delete from favoriteWords where word LIKE '%"+w+"%';";
+            database.queryData(query);
+        }
+        else{
+            String query = String.format( "insert into favoriteWords values(null,' %s', '%s', '%s')", w, word.getMean(), word.getExamp());
+            database.queryData(query);
+        }
+
     }
 
     public ArrayList<Word> getAllWords(){

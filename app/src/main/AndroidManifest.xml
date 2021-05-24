@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
+        <activity android:name=".SearchActivity"></activity>
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"
@@ -21,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".favorite" />
-        <activity android:name=".history" />
+        <activity android:name=".FavoriteActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".VnActivity" />
         <activity android:name=".TranslateActivity" />
     </application>

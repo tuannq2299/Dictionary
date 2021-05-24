@@ -9,6 +9,7 @@ public class Word implements Serializable {
     private String examp;
 
     public Word() {
+        this.examp = ".";
     }
 
     public Word(int id, String word, String mean, String examp) {
@@ -18,8 +19,7 @@ public class Word implements Serializable {
         this.examp = examp;
     }
 
-    public Word(int id, String word, String mean) {
-        this.id = id;
+    public Word(String word, String mean) {
         this.word = word;
         this.mean = mean;
         this.examp = ".";

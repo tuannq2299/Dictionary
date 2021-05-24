@@ -15,15 +15,18 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class TranslateActivity extends AppCompatActivity {
+import Model.Word;
 
+public class TranslateActivity extends AppCompatActivity {
     TextView tvWord,tvMeaning;
     String url,word;
     MaterialToolbar topAppBar;
+    CRUD crud;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_translate);
+        crud = new CRUD(this);
         tvWord = findViewById(R.id.tvWord);
         tvMeaning = findViewById(R.id.tvMeaning);
         word = getIntent().getStringExtra("word");
@@ -42,24 +45,45 @@ public class TranslateActivity extends AppCompatActivity {
                 TranslateActivity.this.finish();
             }
         });
-
+        MenuItem fav= (MenuItem) topAppBar.getMenu().findItem(R.id.favorite);
+        boolean isFavorite = crud.checkFavorite(word);
+        if(isFavorite==true){
+            fav.setIcon(R.drawable.favorite);
+            Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            fav.setIcon(R.drawable.no_favorite);
+            Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
+        }
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+
                 switch(item.getItemId()){
                     case R.id.favorite:
-                        boolean mstate = !item.isChecked();
-                        if(mstate){
-                            item.setChecked(mstate);
+                        boolean mstate = item.isChecked();
+                        if(mstate==true){
+                            item.setChecked(!mstate);
                             item.setIcon(R.drawable.favorite);
+                            Word temp =new Word();
+                            temp.setWord(word);
+                            temp.setMean("mean");
+                            temp.setExamp("example");
+                            crud.updateFavorite(temp,1);
+                           // Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            item.setChecked(mstate);
+                            item.setChecked(!mstate);
                             item.setIcon(R.drawable.no_favorite);
+                            Word temp =new Word();
+                            temp.setWord(word);
+                            crud.updateFavorite(temp,0);
+                            //Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case R.id.search:
-                        Toast.makeText(TranslateActivity.this,"Search",Toast.LENGTH_SHORT).show();
+                        topAppBar.setVisibility(View.INVISIBLE);
+
                         break;
                     case R.id.more:
                         break;
