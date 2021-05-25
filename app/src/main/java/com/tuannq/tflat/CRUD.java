@@ -59,7 +59,7 @@ public class CRUD {
         return q;
     }
 //    Lay tat ca cau hoi
-    public ArrayList<Question> getAllQuestion(int i){
+    public ArrayList<Question> getAllQuestion(){
         String query = "Select * from questions";
         ArrayList<Question> q=null;
 
