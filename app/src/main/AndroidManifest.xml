@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".ToeicActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity
             android:name=".TabActivity"
             android:label="@string/title_activity_tab"
