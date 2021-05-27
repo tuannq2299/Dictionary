@@ -9,6 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topSearch"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -16,15 +17,18 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/menusearch"
             app:navigationIcon="@drawable/back"
-            app:title="" >
-            <EditText
+            app:title="">
+
+            <AutoCompleteTextView
                 android:id="@+id/editSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/search"
-                android:textColorHint="@color/gray">
-
-            </EditText>
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:completionHint="@string/search"
+                android:hint="Search ..."
+                android:textColor="@color/white"
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.appbar.MaterialToolbar>

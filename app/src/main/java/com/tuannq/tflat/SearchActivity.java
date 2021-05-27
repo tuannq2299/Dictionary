@@ -7,13 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.ArrayList;
+
+import Model.Word;
+
 public class SearchActivity extends AppCompatActivity {
-    EditText editSearch;
+    AutoCompleteTextView editSearch;
     MaterialToolbar topAppBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,15 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         editSearch = findViewById(R.id.editSearch);
         topAppBar =findViewById(R.id.topSearch);
+        CRUD crud = new CRUD(this);
+        ArrayList<Word>words=crud.getAllWords();
+        ArrayList<String> temp=new ArrayList<>();
+        for(Word i:words){
+            temp.add(i.getWord());
+        }
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_activated_1,temp);
+        editSearch.setAdapter(adapter);
+        editSearch.setThreshold(1);
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

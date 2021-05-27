@@ -11,10 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -25,13 +28,14 @@ import Model.Word;
 
 public class Fragment_Home1 extends Fragment {
     ImageView ivSearch;
-    EditText etSearch;
+    AutoCompleteTextView etSearch;
     TextView tvBanner;
     Button btnHistory,btnYW,btnVA;
     ArrayList<Word> words;
     ArrayList<Word> yourWords;
     TabLayout tabLayout;
     ViewPager viewPager;
+    CRUD crud;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class Fragment_Home1 extends Fragment {
         btnHistory=view.findViewById(R.id.btnHistory);
         btnYW=view.findViewById(R.id.btnYW);
         btnVA=view.findViewById(R.id.btnVA);
+
         ivSearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -69,13 +74,20 @@ public class Fragment_Home1 extends Fragment {
                 onClickYW(v);
             }
         });
-        CRUD crud = new CRUD(getActivity());
+        crud = new CRUD(getActivity());
 //        crud.insertFavoriteWord(new Word(1,"turtle","Con rùa", "."));
 //        crud.insertFavoriteWord(new Word(1,"horse","Con ngựa", "."));
 //        crud.insertFavoriteWord(new Word(1,"Tiger","Con hổ", "."));
 //        crud.insertFavoriteWord(new Word(1,"Lion","Con sư tử", "."));
 //        crud.insertFavoriteWord(new Word(1,"duck","Con vịt", "."));
         words = crud.getAllWords();
+        ArrayList<String>temp=new ArrayList<>();
+        for(Word i:words){
+            temp.add(i.getWord());
+        }
+        ArrayAdapter<String>adapter=new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_activated_1,temp);
+        etSearch.setAdapter(adapter);
+        etSearch.setThreshold(1);
         yourWords = crud.getFavoriteWords();
         return view;
     }

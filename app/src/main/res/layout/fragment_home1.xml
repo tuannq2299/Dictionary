@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frag_home1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/frag_home1">
+    android:orientation="vertical">
 
 
     <TextView
@@ -23,15 +23,13 @@
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:ems="10"
-            android:hint="English-English Dictionary"
-            android:inputType="textPersonName" />
+            android:hint="Search E-E Dictionary" />
 
         <ImageView
             android:id="@+id/ivSearch_1"
