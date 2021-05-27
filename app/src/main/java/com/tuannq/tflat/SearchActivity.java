@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
         for(Word i:words){
             temp.add(i.getWord());
         }
-        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_activated_1,temp);
+        ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,temp);
         editSearch.setAdapter(adapter);
         editSearch.setThreshold(1);
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {

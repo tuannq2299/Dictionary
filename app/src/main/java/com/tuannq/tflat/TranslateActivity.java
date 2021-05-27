@@ -47,6 +47,15 @@ public class TranslateActivity extends AppCompatActivity {
         });
         MenuItem fav= (MenuItem) topAppBar.getMenu().findItem(R.id.favorite);
         boolean isFavorite = crud.checkFavorite(word);
+
+//        Kiem tra xem tu da co trong lich su chua va luu vao lich su
+        if(crud.findWord(word).getWord().equals(word)){
+
+        }else{
+            crud.insertWord(new Word(1, word, " ", " "));
+        }
+
+
         if(isFavorite==true){
             fav.setIcon(R.drawable.favorite);
             Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();

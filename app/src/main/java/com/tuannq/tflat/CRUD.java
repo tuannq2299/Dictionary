@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Question;
 import Model.Word;
 
 public class CRUD {
@@ -15,8 +16,73 @@ public class CRUD {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
         database.queryData("CREATE TABLE IF NOT EXISTS words(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
         database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
+
+        database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
+                ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255))");
     }
 
+//    question
+
+//    Insert cau hoi vao csdl
+    public boolean insertQuestion(Question q){
+        try{
+            String query = String.format("insert into questions values(null, '%s', '%s', '%s', '%s', '%s', '%s')",
+                    q.getQuestion(), q.getA(), q.getB(), q.getC(), q.getD(), q.getRs());
+
+            database.queryData(query);
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+//    Tim cau hoi theo id
+    public Question getQuestionById(int i){
+        String query = "Select * from questions where id = "+i;
+        Question q=null;
+
+        try{
+            Cursor c = database.getData(query);
+            if(c.moveToNext()){
+                q = new Question(c.getInt(0),c.getString(1), c.getString(2),
+                        c.getString(3), c.getString(4), c.getString(5),
+                        c.getString(6));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+        return q;
+    }
+//    Lay tat ca cau hoi
+    public ArrayList<Question> getAllQuestion(){
+        String query = "Select * from questions";
+        ArrayList<Question> q=null;
+
+        try{
+            Cursor c = database.getData(query);
+            while (c.moveToNext()){
+                Question a = new Question(c.getInt(0),c.getString(1), c.getString(2),
+                        c.getString(3), c.getString(4), c.getString(5),
+                        c.getString(6));
+                q.add(a);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
+        return q;
+    }
+
+
+
+//    word
     public void insertWord(Word w){
             String query = String.format( "insert into words values(null, '%s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
             database.queryData(query);
@@ -27,7 +93,7 @@ public class CRUD {
         database.queryData(query);
     }
     public Word findWord(String word){
-        Word w = new Word();
+        Word w = new Word(1,"","","");
         w.setMean("");
         w.setWord("");
         w.setExamp("");
@@ -81,4 +147,30 @@ public class CRUD {
         return arr;
     }
 
+    public boolean deleteWord(String str){
+        String query = "delete from words where word like '"+str+"'";
+        try{
+            database.queryData(query);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteFavoriteWord(String str){
+        String query = "delete from favoriteWords where word like '"+str+"'";
+        try{
+            database.queryData(query);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 }
+
+//    CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)), c VARCHAR(255)), d VARCHAR(255), rs VARCHAR(255))
