@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+ package com.tuannq.tflat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,7 @@ import Model.Question;
 public class Fragment_Home2 extends Fragment {
 
     ArrayList<Question> questions;
+
     Button btnTOEIC;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,7 +35,6 @@ public class Fragment_Home2 extends Fragment {
         });
         CRUD c = new CRUD(getActivity());
         questions=c.getAllQuestion();
-
         return view;
     }
     public void onClickQues(View v){

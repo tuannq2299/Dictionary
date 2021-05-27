@@ -5,11 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.ArrayList;
+import java.util.Queue;
+
+import Model.Question;
+
 public class ToeicActivity extends AppCompatActivity {
 
+    ArrayList<Question> questions;
+    ListView listQues;
     MaterialToolbar topAppBar;
 
     @Override

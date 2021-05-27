@@ -16,12 +16,14 @@ public class CRUD {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
         database.queryData("CREATE TABLE IF NOT EXISTS words(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
         database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
-
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
                 ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255))");
+
+
     }
 
 //    question
+
 
 //    Insert cau hoi vao csdl
     public boolean insertQuestion(Question q){
