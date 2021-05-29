@@ -41,9 +41,9 @@ public class WordListViewAdapter extends BaseAdapter {
 
          Word w = (Word) getItem(position);
         ((TextView) viewWord.findViewById(R.id.word)).setText(String.format("Word: %s", w.getWord()));
-        ((TextView) viewWord.findViewById(R.id.mean)).setText(String.format("Mean: %s", w.getMean()));
+        ((TextView) viewWord.findViewById(R.id.mean)).setText("");
         if(!w.getExamp().equals(".")){
-            ((TextView) viewWord.findViewById(R.id.examp)).setText(String.format("Mean: %s", w.getExamp()));
+            ((TextView) viewWord.findViewById(R.id.examp)).setText("");
         }
         return viewWord;
     }

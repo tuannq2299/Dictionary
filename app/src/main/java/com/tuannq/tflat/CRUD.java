@@ -7,6 +7,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Paragraph;
 import Model.Question;
 import Model.Word;
 
@@ -19,7 +20,61 @@ public class CRUD {
 
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
                 ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255))");
+
+        database.queryData("CREATE TABLE IF NOT EXISTS paragraph(id INTEGER PRIMARY KEY AUTOINCREMENT, inputParagraph VARCHAR(255) UNIQUE, outputParagraph VARCHAR(255), inputLang VARCHAR(255)" +
+                ", outputLang VARCHAR(255))");
     }
+    //    Paragrap
+    public boolean insertParagrap(Paragraph p){
+        String query = String.format("insert into paragraph values(null, '%s', '%s', '%s', '%s')",
+                p.getInputParaGraph(), p.getOutputParaGraph(), p.getInputLang(), p.getOutputLang());
+        try{
+            database.queryData(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public Paragraph getParagraphByInput(String inputParagrap){
+        Paragraph p = new Paragraph();
+        String query = String.format("Select * from paragraph where inputParagraph like '%"+inputParagrap+"%'");
+        try{
+            Cursor c = database.getData(query);
+            if(c.moveToNext()){
+                p = new Paragraph(c.getInt(0), c.getString(1),
+                        c.getString(2), c.getString(3), c.getString(4));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return p;
+    }
+
+    public ArrayList<Paragraph> getAllParagraph(){
+        String query = "Select * from paragraph";
+        ArrayList<Paragraph> p=null;
+
+        try{
+            Cursor c = database.getData(query);
+            while (c.moveToNext()){
+                Paragraph a = new Paragraph(c.getInt(0), c.getString(1),
+                        c.getString(2), c.getString(3), c.getString(4));
+                p.add(a);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return p;
+    }
+
+
 
 //    question
 
