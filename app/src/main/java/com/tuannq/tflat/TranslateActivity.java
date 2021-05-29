@@ -3,11 +3,8 @@ package com.tuannq.tflat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -40,7 +37,7 @@ public class TranslateActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TranslateActivity.this,TabActivity.class);
+                Intent intent=new Intent(TranslateActivity.this, MainActivity.class);
                 startActivity(intent);
                 TranslateActivity.this.finish();
             }

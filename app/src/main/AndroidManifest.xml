@@ -15,7 +15,7 @@
         <receiver android:name=".AlarmReceiver"></receiver>
         <activity android:name=".SearchActivity" />
         <activity
-            android:name=".TabActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_tab"
             android:theme="@style/Theme.TFlat.NoActionBar">
             <intent-filter>
@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".FavoriteActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".VnActivity" />

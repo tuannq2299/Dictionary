@@ -6,8 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -51,7 +49,7 @@ public class VnActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(VnActivity.this,TabActivity.class);
+                Intent intent=new Intent(VnActivity.this, MainActivity.class);
                 startActivity(intent);
                 VnActivity.this.finish();
             }

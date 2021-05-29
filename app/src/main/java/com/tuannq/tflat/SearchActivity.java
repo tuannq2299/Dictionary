@@ -9,8 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -39,7 +37,7 @@ public class SearchActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SearchActivity.this,TabActivity.class);
+                Intent intent=new Intent(SearchActivity.this, MainActivity.class);
                 startActivity(intent);
                 SearchActivity.this.finish();
             }
