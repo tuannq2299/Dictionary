@@ -2,11 +2,12 @@ package com.tuannq.tflat;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
-import Model.Paragraph;
 import Model.Question;
+import Model.TranslateParagraphHistory;
 import Model.Word;
 
 public class CRUD {
@@ -19,13 +20,13 @@ public class CRUD {
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
                 ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255))");
 
-        database.queryData("CREATE TABLE IF NOT EXISTS paragraph(id INTEGER PRIMARY KEY AUTOINCREMENT, inputParagraph VARCHAR(255) UNIQUE, outputParagraph VARCHAR(255), inputLang VARCHAR(255)" +
+        database.queryData("CREATE TABLE IF NOT EXISTS paragraph(id INTEGER PRIMARY KEY AUTOINCREMENT, inputParagraph VARCHAR(255), outputParagraph VARCHAR(255), inputLang VARCHAR(255)" +
                 ", outputLang VARCHAR(255))");
     }
     //    Paragrap
-    public boolean insertParagrap(Paragraph p){
+    public boolean insertParagrap(TranslateParagraphHistory p){
         String query = String.format("insert into paragraph values(null, '%s', '%s', '%s', '%s')",
-                p.getInputParaGraph(), p.getOutputParaGraph(), p.getInputLang(), p.getOutputLang());
+                p.getInputParagraph(), p.getOutputParagraph(), p.getInputLang(), p.getOutputLang());
         try{
             database.queryData(query);
         }
@@ -36,13 +37,25 @@ public class CRUD {
         return true;
     }
 
-    public Paragraph getParagraphByInput(String inputParagrap){
-        Paragraph p = new Paragraph();
+    public boolean delete(TranslateParagraphHistory p){
+        String query = "DROP TABLE paragraph";
+        try{
+            database.queryData(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public TranslateParagraphHistory getParagraphByInput(String inputParagrap){
+        TranslateParagraphHistory p = new TranslateParagraphHistory();
         String query = String.format("Select * from paragraph where inputParagraph like '%"+inputParagrap+"%'");
         try{
             Cursor c = database.getData(query);
             if(c.moveToNext()){
-                p = new Paragraph(c.getInt(0), c.getString(1),
+                p = new TranslateParagraphHistory(c.getInt(0), c.getString(1),
                         c.getString(2), c.getString(3), c.getString(4));
             }
         }
@@ -53,16 +66,17 @@ public class CRUD {
         return p;
     }
 
-    public ArrayList<Paragraph> getAllParagraph(){
-        String query = "Select * from paragraph";
-        ArrayList<Paragraph> p=null;
+    public ArrayList<TranslateParagraphHistory> getAllParagraph(){
+        String query = "Select * from paragraph order by id desc limit 7";
+        ArrayList<TranslateParagraphHistory> p = new ArrayList<>();
 
         try{
             Cursor c = database.getData(query);
             while (c.moveToNext()){
-                Paragraph a = new Paragraph(c.getInt(0), c.getString(1),
+                TranslateParagraphHistory a = new TranslateParagraphHistory(c.getInt(0), c.getString(1),
                         c.getString(2), c.getString(3), c.getString(4));
                 p.add(a);
+                Log.d("getAllParagraph: ", a.getId() + a.getInputParagraph());
             }
         }
         catch (Exception e){

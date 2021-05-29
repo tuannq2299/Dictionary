@@ -21,9 +21,10 @@ public class Fragment_ListParagraphHistory extends Fragment {
     RecyclerView.LayoutManager layoutManager;
     View view;
     ArrayList<TranslateParagraphHistory> list = new ArrayList<>();
+    CRUD database;
 
     public Fragment_ListParagraphHistory() {
-        list.add(new TranslateParagraphHistory("hello", "xin chao", "en","vi"));
+
     }
 
 
@@ -35,10 +36,11 @@ public class Fragment_ListParagraphHistory extends Fragment {
         return view;
     }
 
+    // hàm set để lấy dữ liệu và hiển thị list dạng recycler view
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        database = new CRUD(getContext());
 //        TranslateParagraphHistory temp = new TranslateParagraphHistory("hello", "xin chao", "en", "vi");
 //        list.add(temp);
 
@@ -47,6 +49,8 @@ public class Fragment_ListParagraphHistory extends Fragment {
 
         layoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(layoutManager);
+
+        list = database.getAllParagraph();
 
         myAdapter = new TPHistoryAdapter(list);
         recyclerView.setAdapter(myAdapter);

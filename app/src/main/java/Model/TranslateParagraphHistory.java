@@ -14,6 +14,14 @@ public class TranslateParagraphHistory {
         this.outputLang = outputLang;
     }
 
+    public TranslateParagraphHistory(int id, String inputParagraph, String outputParagraph, String inputLang, String outputLang) {
+        this.id = id;
+        this.inputParagraph = inputParagraph;
+        this.outputParagraph = outputParagraph;
+        this.inputLang = inputLang;
+        this.outputLang = outputLang;
+    }
+
     public TranslateParagraphHistory() {
     }
 

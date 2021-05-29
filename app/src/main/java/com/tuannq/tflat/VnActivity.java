@@ -3,7 +3,6 @@ package com.tuannq.tflat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +19,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import Model.TranslateParagraphHistory;
+
 public class VnActivity extends AppCompatActivity {
 
     EditText etWord;
@@ -31,7 +32,8 @@ public class VnActivity extends AppCompatActivity {
     RadioButton rb_InputVn, rb_InputEn, rb_InputFr, rb_OutputVn, rb_OutputEn, rb_OutputFr;
     Button btnParagraphHistory;
     FragmentManager fragmentManager;
-
+    Fragment_ListParagraphHistory fragment_listParagraphHistory;
+    CRUD database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NetworkOnMainThreadException {
@@ -51,15 +53,19 @@ public class VnActivity extends AppCompatActivity {
         rb_OutputFr = findViewById(R.id.rb_OutputFr);
         btnParagraphHistory = findViewById(R.id.btnParagraphHistory);
         fragmentManager = this.getSupportFragmentManager();
+        fragment_listParagraphHistory = (Fragment_ListParagraphHistory) fragmentManager.findFragmentById(R.id.fragment_list);
         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
+        database = new CRUD(VnActivity.this);
 
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // mặc định là en và vi
                 String text = "" + etWord.getText().toString();
                 String inputLang = "en";
                 String outputLang = "vi";
-// check for input language
+
+                // check for input language
                 int checkedRadioInputId = rgInput.getCheckedRadioButtonId();
                 int checkedRadioOutputId = rgOutput.getCheckedRadioButtonId();
                 if (checkedRadioInputId == R.id.rb_InputVn){
@@ -69,7 +75,8 @@ public class VnActivity extends AppCompatActivity {
                 } else if (checkedRadioInputId == R.id.rb_inputFr){
                     inputLang = "fr";
                 }
-// check for output language
+
+                // check for output language
                 if (checkedRadioOutputId == R.id.rb_OutputVn){
                     outputLang = "vi";
                 } else if (checkedRadioOutputId == R.id.rb_OutputEn){
@@ -77,25 +84,28 @@ public class VnActivity extends AppCompatActivity {
                 } else if (checkedRadioOutputId == R.id.rb_OutputFr){
                     outputLang = "fr";
                 }
-// Run translator
+                // Run translator
                 if(!inputLang.equals(outputLang)) {
-                    Translator trans = new Translator(tvTranslate, inputLang, outputLang);
+                    TranslateParagraphHistory history = new TranslateParagraphHistory(text, "", inputLang, outputLang);
+                    Translator trans = new Translator(tvTranslate, history, database);
                     trans.execute(text);
+                    history.setOutputParagraph(tvTranslate.getText().toString());
+                    fragment_listParagraphHistory.list.add(0, history);
                 } else {
                     tvTranslate.setText("- Ngôn ngữ đầu vào và đầu ra giống nhau");
                 }
             }
         });
-
+        // hiển thị fragment và update list khi click button
         btnParagraphHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fragment_listParagraphHistory.notifyDataChanged();
                 fragmentManager.beginTransaction().show(fragmentManager.findFragmentById(R.id.fragment_list)).hide(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).addToBackStack(null).commit();
-                Log.d("fragment_listParagraphHistory", "onClick: ");
             }
         });
 
-// navigation
+        // navigation
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +115,7 @@ public class VnActivity extends AppCompatActivity {
             }
         });
 
-// Menu item
+        // Menu item
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

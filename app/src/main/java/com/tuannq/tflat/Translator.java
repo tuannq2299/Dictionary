@@ -12,24 +12,32 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import Model.TranslateParagraphHistory;
+
 public class Translator extends AsyncTask<String,Integer,String> {
     TextView textView;
     String inputLang;
     String outputLang;
+    TranslateParagraphHistory history;
+    CRUD database;
+
+
     public Translator(TextView textView) {
         this.textView = textView;
     }
 
-    public Translator(TextView textView, String inputLang, String outputLang) {
+    public Translator(TextView textView, TranslateParagraphHistory history, CRUD database) {
         this.textView = textView;
-        this.inputLang = inputLang;
-        this.outputLang = outputLang;
+        this.inputLang = history.getInputLang();
+        this.outputLang = history.getOutputLang();
+        this.database = database;
+        this.history = history;
     }
 
     public Translator() {
 
     }
-
+    // hàm chạy ngầm để gửi get request tới google script
     @Override
     protected String doInBackground(String... params) {
         try{
@@ -58,12 +66,18 @@ public class Translator extends AsyncTask<String,Integer,String> {
         return "";
     }
 
+    // hàm khi gọi execute
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         try{
             textView.setText("Đoạn văn đã dịch nghĩa:\n"
                     + "- "+ s);
+            // kiểm tra có output paragraph hay không
+            if (!s.equals("")) {
+                history.setOutputParagraph(s);
+                database.insertParagrap(history);
+            }
         }
         catch(Exception e){
             e.printStackTrace();
