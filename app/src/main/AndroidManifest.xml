@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
-        <activity android:name=".ToeicActivity"></activity>
+        <activity android:name=".QuesActivity"></activity>
+        <activity android:name=".PresentActivity" />
+        <activity android:name=".PresentAdapter" />
         <activity android:name=".SearchActivity" />
         <activity
             android:name=".TabActivity"

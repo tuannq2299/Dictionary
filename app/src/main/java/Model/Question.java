@@ -11,6 +11,7 @@ public class Question {
         this.id = id;
     }
 
+//    part1
     private String question;
     private String a;
     private String b;

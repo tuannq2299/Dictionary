@@ -98,7 +98,6 @@ public class Fragment_Home1 extends Fragment {
         Intent intent = new Intent(getActivity(), HistoryActivity.class);
         String str = (new Gson()).toJson(words);
         intent.putExtra("arrW", str);
-
         startActivity(intent);
     }
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import Model.Question;
 import Model.Word;
 
 public class FavoriteActivity extends AppCompatActivity {
@@ -32,7 +34,7 @@ public class FavoriteActivity extends AppCompatActivity {
         topAppBar = findViewById(R.id.favoriteBack);
         topAppBar.setTitle("Favorite");
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
+           @Override
             public void onClick(View v) {
                 Intent intent=new Intent(FavoriteActivity.this,TabActivity.class);
                 startActivity(intent);
@@ -41,8 +43,13 @@ public class FavoriteActivity extends AppCompatActivity {
         });
         String str = getIntent().getStringExtra("arrW");
         Gson g = new Gson();
+//        arrW("part1")
+//        2
+//        3
+
         Type listType = new TypeToken<ArrayList<Word> >(){}.getType();
         arrW = g.fromJson(str, listType);
+        CRUD c = new CRUD(FavoriteActivity.this);
 
         wordListViewAdapter = new WordListViewAdapter(arrW);
         listView = findViewById(R.id.listWords);

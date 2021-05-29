@@ -38,7 +38,7 @@ public class Fragment_Home2 extends Fragment {
         return view;
     }
     public void onClickQues(View v){
-        Intent intent = new Intent(getActivity(),ToeicActivity.class);
+        Intent intent = new Intent(getActivity(),PresentActivity.class);
         startActivity(intent);
     }
 

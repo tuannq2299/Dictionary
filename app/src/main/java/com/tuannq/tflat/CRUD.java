@@ -16,9 +16,9 @@ public class CRUD {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
         database.queryData("CREATE TABLE IF NOT EXISTS words(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
         database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
+//        database.queryData("Drop table questions");
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
-                ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255))");
-
+                ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255), _group VARCHAR(255))");
 
     }
 
@@ -26,13 +26,11 @@ public class CRUD {
 
 
 //    Insert cau hoi vao csdl
-    public boolean insertQuestion(Question q){
+    public boolean insertQuestion(Question q, String group){
         try{
-            String query = String.format("insert into questions values(null, '%s', '%s', '%s', '%s', '%s', '%s')",
-                    q.getQuestion(), q.getA(), q.getB(), q.getC(), q.getD(), q.getRs());
-
+            String query = String.format("insert into questions values(null, '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                    q.getQuestion(), q.getA(), q.getB(), q.getC(), q.getD(), q.getRs(), group);
             database.queryData(query);
-
         }
         catch (Exception e){
             e.printStackTrace();
@@ -63,8 +61,7 @@ public class CRUD {
 //    Lay tat ca cau hoi
     public ArrayList<Question> getAllQuestion(){
         String query = "Select * from questions";
-        ArrayList<Question> q=null;
-
+        ArrayList<Question> q=new ArrayList<>();
         try{
             Cursor c = database.getData(query);
             while (c.moveToNext()){
@@ -78,9 +75,27 @@ public class CRUD {
             e.printStackTrace();
             return null;
         }
-
         return q;
     }
+//    Lay cau hoi theo thi
+public ArrayList<Question> getAllQuestionByType(String group){
+    String query = "Select * from questions where _group like '%"+group+"'";
+    ArrayList<Question> q=new ArrayList<>();
+    try{
+        Cursor c = database.getData(query);
+        while (c.moveToNext()){
+            Question a = new Question(c.getInt(0),c.getString(1), c.getString(2),
+                    c.getString(3), c.getString(4), c.getString(5),
+                    c.getString(6));
+            q.add(a);
+        }
+    }
+    catch (Exception e){
+        e.printStackTrace();
+        return null;
+    }
+    return q;
+}
 
 
 
@@ -172,6 +187,7 @@ public class CRUD {
         }
         return true;
     }
+
 
 }
 
