@@ -1,12 +1,7 @@
 package com.tuannq.tflat;
 //
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
-
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,9 +14,16 @@ import java.net.URLEncoder;
 
 public class Translator extends AsyncTask<String,Integer,String> {
     TextView textView;
-
+    String inputLang;
+    String outputLang;
     public Translator(TextView textView) {
         this.textView = textView;
+    }
+
+    public Translator(TextView textView, String inputLang, String outputLang) {
+        this.textView = textView;
+        this.inputLang = inputLang;
+        this.outputLang = outputLang;
     }
 
     public Translator() {
@@ -33,8 +35,8 @@ public class Translator extends AsyncTask<String,Integer,String> {
         try{
             String urlStr = "https://script.google.com/macros/s/AKfycbwWT9BNzQRMANmu-hgLYwxYB0fOWKd-1L76A0O5laLhiCcz5bfV2QJCovtOHve5SlVx/exec" +
                     "?q=" + URLEncoder.encode(params[0], "UTF-8") +
-                    "&target=" + "vi" +
-                    "&source=" + "en";
+                    "&target=" + outputLang +
+                    "&source=" + inputLang;
             URL url = new URL(urlStr);
             StringBuilder response = new StringBuilder();
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

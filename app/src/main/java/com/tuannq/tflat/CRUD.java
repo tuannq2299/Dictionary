@@ -1,11 +1,9 @@
 package com.tuannq.tflat;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Model.Question;
 import Model.Word;
@@ -22,6 +20,7 @@ public class CRUD {
     }
 
 //    question
+
 
 //    Insert cau hoi vao csdl
     public boolean insertQuestion(Question q){
