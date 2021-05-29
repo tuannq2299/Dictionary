@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -17,6 +21,13 @@ public class QuesActivity extends AppCompatActivity {
     ArrayList<Question> questionArrayList;
     int index = 0;
     int rs = 0;
+
+    TextView tvQuestion;
+    Button btnA;
+    Button btnB;
+    Button btnC;
+    Button btnD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +41,42 @@ public class QuesActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-      //  String keyword = getIntent().getStringExtra("keyword"); //thtd
-        //Lay danh sach cau hoi
+        init();
+
+
+
+        String keyword = getIntent().getStringExtra("keyword"); //thtd
         //CRUD
-      //  CRUD crud = new CRUD(QuesActivity.this);
-      //  questionArrayList = crud.getAllQuestionByType(keyword);
+        CRUD crud = new CRUD(QuesActivity.this);
+        //Get Question để test sau này sửa sau
+        //Làm xong insert 3-4 câu hỏi để test nghiệp vụ xem đúng logic không
+        questionArrayList = crud.getAllQuestion();
 
-        //hien thi cau hoi so 0
-       // renderQuestion(questionArrayList.get(0));
+        if(index==0){
+            renderQuestion(questionArrayList.get(index));
+        }
 
+        btnA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnA.getText().equals(questionArrayList.get(index).getRs())){
+                    rs+=1;
+                }
+                Log.d("1", btnA.getText()+"");
+
+                if(index<questionArrayList.size()){
+                    btnA.setText("1");
+                    renderQuestion(questionArrayList.get(index));
+                }
+                else {
+//                    Tao intern goi ve man PresentActivity
+//                    Hien thi so cau tra loi dung
+                                    //PresentActivity.this
+//                    Toast.makeText(QuesActivity.this, "Bạn trả lời đúng: "+rs+"/"+
+//                            questionArrayList.size()+"câu.", Toast.LENGTH_LONG);
+                }
+            }
+        });
 
         //Onclick nut A goi CheckDapAn
         //lay value nut a so sanh a.getValue().equal( questionList.get(index).getRs());
@@ -58,8 +96,22 @@ public class QuesActivity extends AppCompatActivity {
         //Tải câu hỏi tiếp theo
         //Hiển thị kết quả nếu hết
     }
-   // void renderQuestion(Question q){
-        // hien thi cau hoi ra view 4 dap an
-//        tx.setValue(q.getQuestion());
-   // }
+
+
+    void init(){
+        tvQuestion = findViewById(R.id.tvQuestion);
+        btnA = findViewById(R.id.btnA);
+        btnB = findViewById(R.id.btnB);
+        btnC = findViewById(R.id.btnC);
+        btnD = findViewById(R.id.btnD);
+    }
+
+
+    void renderQuestion(Question q){
+        tvQuestion.setText(q.getQuestion());
+        btnA.setText(q.getA());
+        btnB.setText(q.getB());
+        btnC.setText(q.getC());
+        btnD.setText(q.getD());
+    }
 }

@@ -21,31 +21,31 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:text="TextView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
