@@ -3,8 +3,10 @@ package com.tuannq.tflat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -26,6 +29,10 @@ public class VnActivity extends AppCompatActivity {
     MaterialToolbar topAppBar;
     RadioGroup rgInput, rgOutput;
     RadioButton rb_InputVn, rb_InputEn, rb_InputFr, rb_OutputVn, rb_OutputEn, rb_OutputFr;
+    Button btnParagraphHistory;
+    FragmentManager fragmentManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NetworkOnMainThreadException {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,9 @@ public class VnActivity extends AppCompatActivity {
         rb_OutputVn = findViewById(R.id.rb_OutputVn);
         rb_OutputEn = findViewById(R.id.rb_OutputEn);
         rb_OutputFr = findViewById(R.id.rb_OutputFr);
+        btnParagraphHistory = findViewById(R.id.btnParagraphHistory);
+        fragmentManager = this.getSupportFragmentManager();
+        fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
 
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +86,15 @@ public class VnActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnParagraphHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction().show(fragmentManager.findFragmentById(R.id.fragment_list)).hide(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).addToBackStack(null).commit();
+                Log.d("fragment_listParagraphHistory", "onClick: ");
+            }
+        });
+
 // navigation
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +104,7 @@ public class VnActivity extends AppCompatActivity {
                 VnActivity.this.finish();
             }
         });
+
 // Menu item
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -101,23 +121,4 @@ public class VnActivity extends AppCompatActivity {
             }
         });
 }
-//    private static String translate( String text) throws IOException {
-//        // INSERT YOU URL HERE
-//        String urlStr = "https://script.google.com/macros/s/AKfycbwWT9BNzQRMANmu-hgLYwxYB0fOWKd-1L76A0O5laLhiCcz5bfV2QJCovtOHve5SlVx/exec" +
-//                "?q=" + URLEncoder.encode(text, "UTF-8") +
-//                "&target=" + "vi" +
-//                "&source=" + "en";
-//        URL url = new URL(urlStr);
-//        StringBuilder response = new StringBuilder();
-//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//        con.setRequestProperty("User-Agent", "Mozilla/5.0");
-//        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//        String inputLine;
-//        while ((inputLine = in.readLine()) != null) {
-//            response.append(inputLine);
-//        }
-//        in.close();
-//        return response.toString();
-//    }
-
 }
