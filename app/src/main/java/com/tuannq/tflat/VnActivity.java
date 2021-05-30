@@ -6,11 +6,11 @@ import android.os.NetworkOnMainThreadException;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,17 +24,16 @@ import Model.TranslateParagraphHistory;
 
 public class VnActivity extends AppCompatActivity {
 
-    EditText etWord;
+    AutoCompleteTextView etWord;
     ImageView ivSearch;
     TextView tvTranslate;
     Translator VnTrans;
     MaterialToolbar topAppBar;
-    RadioGroup rgInput, rgOutput;
-    RadioButton rb_InputVn, rb_InputEn, rb_InputFr, rb_OutputVn, rb_OutputEn, rb_OutputFr;
     Button btnParagraphHistory;
     FragmentManager fragmentManager;
     Fragment_ListParagraphHistory fragment_listParagraphHistory;
     CRUD database;
+    Spinner spInputlang, spOutputLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NetworkOnMainThreadException {
@@ -44,14 +43,14 @@ public class VnActivity extends AppCompatActivity {
         ivSearch = findViewById(R.id.ivSearch_VI);
         tvTranslate = findViewById(R.id.tvTranslate_VI);
         topAppBar = findViewById(R.id.topAppBarVN);
-        rgInput = findViewById(R.id.rgInput);
-        rgOutput = findViewById(R.id.rgOutput);
-        rb_InputVn = findViewById(R.id.rb_InputVn);
-        rb_InputEn = findViewById(R.id.rb_InputEn);
-        rb_InputFr = findViewById(R.id.rb_inputFr);
-        rb_OutputVn = findViewById(R.id.rb_OutputVn);
-        rb_OutputEn = findViewById(R.id.rb_OutputEn);
-        rb_OutputFr = findViewById(R.id.rb_OutputFr);
+        spInputlang = findViewById(R.id.spInputLang);
+        spOutputLang = findViewById(R.id.spOutputLang);
+
+        String lang[] = {"Vietnamese", "English", "French"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lang);
+        spInputlang.setAdapter(adapter);
+        spOutputLang.setAdapter(adapter);
+
         btnParagraphHistory = findViewById(R.id.btnParagraphHistory);
         fragmentManager = this.getSupportFragmentManager();
         fragment_listParagraphHistory = (Fragment_ListParagraphHistory) fragmentManager.findFragmentById(R.id.fragment_list);
@@ -75,22 +74,23 @@ public class VnActivity extends AppCompatActivity {
                 String outputLang = "vi";
 
                 // check for input language
-                int checkedRadioInputId = rgInput.getCheckedRadioButtonId();
-                int checkedRadioOutputId = rgOutput.getCheckedRadioButtonId();
-                if (checkedRadioInputId == R.id.rb_InputVn){
+
+                String inputLangTemp  = (String) spInputlang.getSelectedItem();
+                if (inputLangTemp=="Vietnamese"){
                     inputLang = "vi";
-                } else if (checkedRadioInputId == R.id.rb_InputEn){
+                } else if (inputLangTemp=="English"){
                     inputLang = "en";
-                } else if (checkedRadioInputId == R.id.rb_inputFr){
+                } else if (inputLangTemp=="French"){
                     inputLang = "fr";
                 }
 
                 // check for output language
-                if (checkedRadioOutputId == R.id.rb_OutputVn){
+                String outputLangTemp  = (String) spOutputLang.getSelectedItem();
+                if (outputLangTemp=="Vietnamese"){
                     outputLang = "vi";
-                } else if (checkedRadioOutputId == R.id.rb_OutputEn){
+                } else if (outputLangTemp=="English"){
                     outputLang = "en";
-                } else if (checkedRadioOutputId == R.id.rb_OutputFr){
+                } else if (outputLangTemp=="French"){
                     outputLang = "fr";
                 }
                 // Run translator
