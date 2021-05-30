@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,11 +11,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.tuannq.tflat.ui.main.ParagraphAdapter;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import Model.TranslateParagraphHistory;
@@ -36,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HistoryActivity.this,TabActivity.class);
+                Intent intent=new Intent(HistoryActivity.this, MainActivity.class);
                 startActivity(intent);
                 HistoryActivity.this.finish();
             }

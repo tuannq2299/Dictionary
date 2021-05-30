@@ -117,7 +117,7 @@ public class VnActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(VnActivity.this,TabActivity.class);
+                Intent intent=new Intent(VnActivity.this, MainActivity.class);
                 startActivity(intent);
                 VnActivity.this.finish();
             }

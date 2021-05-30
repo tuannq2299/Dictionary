@@ -1,10 +1,8 @@
 package com.tuannq.tflat;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +14,6 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.google.android.material.appbar.MaterialToolbar;
-
-import java.util.Random;
 
 public class SettingActivity extends AppCompatActivity {
     Switch switchNoti;
@@ -35,7 +31,7 @@ public class SettingActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SettingActivity.this,TabActivity.class);
+                Intent intent=new Intent(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
                 SettingActivity.this.finish();
             }

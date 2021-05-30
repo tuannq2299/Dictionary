@@ -29,7 +29,7 @@ public class list extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(list.this,TabActivity.class);
+                Intent intent=new Intent(list.this, MainActivity.class);
                 startActivity(intent);
                 list.this.finish();
             }

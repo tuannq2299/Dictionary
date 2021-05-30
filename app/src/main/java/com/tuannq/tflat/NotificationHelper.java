@@ -3,8 +3,10 @@ package com.tuannq.tflat;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Color;
 
 public class NotificationHelper extends ContextWrapper {
@@ -34,10 +36,14 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     public Notification.Builder getNotiChannel(String title,String body){
+        Intent rsIntent = new Intent(this, TranslateActivity.class);
+        rsIntent.putExtra("word", title);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,1, rsIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         return new Notification.Builder(getApplicationContext(),CHANNEL_ID)
                 .setContentText(body)
                 .setContentTitle(title)
                 .setSmallIcon(R.mipmap.icon)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setContentIntent(pendingIntent);
     }
 }

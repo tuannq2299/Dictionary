@@ -34,7 +34,7 @@ public class FavoriteActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(FavoriteActivity.this,TabActivity.class);
+                Intent intent=new Intent(FavoriteActivity.this, MainActivity.class);
                 startActivity(intent);
                 FavoriteActivity.this.finish();
             }
