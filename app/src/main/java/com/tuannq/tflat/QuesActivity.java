@@ -1,7 +1,9 @@
 package com.tuannq.tflat;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,15 +44,16 @@ public class QuesActivity extends AppCompatActivity {
             }
         });
         init();
-
-
-
         String keyword = getIntent().getStringExtra("keyword"); //thtd
         //CRUD
         CRUD crud = new CRUD(QuesActivity.this);
         //Get Question để test sau này sửa sau
         //Làm xong insert 3-4 câu hỏi để test nghiệp vụ xem đúng logic không
+        //Sửa lại cái này khi chuyền được thông điệp từ bên kia sang
+        //
+        ;
         questionArrayList = crud.getAllQuestion();
+        //questionArrayList=crud.getAllQuestionByType(keyword);
 
         if(index==0){
             renderQuestion(questionArrayList.get(index));
@@ -63,38 +66,112 @@ public class QuesActivity extends AppCompatActivity {
                     rs+=1;
                 }
                 Log.d("1", btnA.getText()+"");
-
+                index+=1;
                 if(index<questionArrayList.size()){
-                    btnA.setText("1");
                     renderQuestion(questionArrayList.get(index));
                 }
                 else {
-//                    Tao intern goi ve man PresentActivity
-//                    Hien thi so cau tra loi dung
-                                    //PresentActivity.this
-//                    Toast.makeText(QuesActivity.this, "Bạn trả lời đúng: "+rs+"/"+
-//                            questionArrayList.size()+"câu.", Toast.LENGTH_LONG);
+                    AlertDialog.Builder alertDialog= new AlertDialog.Builder(QuesActivity.this);
+                    alertDialog.setTitle("Xac nhan thoat");
+                    alertDialog.setMessage("Bạn trả lời đúng: "+rs+"/"+questionArrayList.size()+"câu.");
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(QuesActivity.this,PresentActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    alertDialog.show();
                 }
             }
         });
 
-        //Onclick nut A goi CheckDapAn
-        //lay value nut a so sanh a.getValue().equal( questionList.get(index).getRs());
-        //neu bang thi rs+1;
-        // index+1
-        // Kiem tra xem con cau hoi con khong index+1 < questionList.size()
-        // set lai view cau hoi tiep theo
-        //renderQuestion(questionArrayList.get(index));
-        // else hien thi ket qua rs;
+        btnB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnB.getText().equals(questionArrayList.get(index).getRs())){
+                    rs+=1;
+                }
+                Log.d("1", btnB.getText()+"");
+                index+=1;
+                if(index<questionArrayList.size()){
+                    btnB.setText("1");
+                    renderQuestion(questionArrayList.get(index));
+                }
+                else {
+                    AlertDialog.Builder alertDialog= new AlertDialog.Builder(QuesActivity.this);
+                    alertDialog.setTitle("Xac nhan thoat");
+                    alertDialog.setMessage("Bạn trả lời đúng: "+rs+"/"+questionArrayList.size()+"câu.");
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(QuesActivity.this,PresentActivity.class);
+                            startActivity(intent);
 
-        //...               CheckDapAn
-        //Nut D             CheckDapAn
+                        }
+                    });
+                    alertDialog.show();
+                }
+            }
+        });
+        btnC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnC.getText().equals(questionArrayList.get(index).getRs())){
+                    rs+=1;
+                }
+                Log.d("1", btnC.getText()+"");
 
-        // Check Dap An
-        //Kiểm tra kết quả và lưu kết quả.
-        //Biến kết quả + 1
-        //Tải câu hỏi tiếp theo
-        //Hiển thị kết quả nếu hết
+                index+=1;
+                if(index<questionArrayList.size()){
+                    btnC.setText("1");
+                    renderQuestion(questionArrayList.get(index));
+                }
+                else {
+                    AlertDialog.Builder alertDialog= new AlertDialog.Builder(QuesActivity.this);
+                    alertDialog.setTitle("Xac nhan thoat");
+                    alertDialog.setMessage("Bạn trả lời đúng: "+rs+"/"+questionArrayList.size()+"câu.");
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(QuesActivity.this,PresentActivity.class);
+                            startActivity(intent);
+
+                        }
+                    });
+
+                    alertDialog.show();
+                }
+            }
+        });
+        btnD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btnD.getText().equals(questionArrayList.get(index).getRs())){
+                    rs+=1;
+                }
+                Log.d("1", btnD.getText()+"");
+                index+=1;
+                if(index<questionArrayList.size()){
+                    btnD.setText("1");
+                    renderQuestion(questionArrayList.get(index));
+                }
+                else {
+                    AlertDialog.Builder alertDialog= new AlertDialog.Builder(QuesActivity.this);
+                    alertDialog.setTitle("Xac nhan thoat");
+                    alertDialog.setMessage("Bạn trả lời đúng: "+rs+"/"+questionArrayList.size()+"câu.");
+                    alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(QuesActivity.this,PresentActivity.class);
+                            startActivity(intent);
+
+                        }
+                    });
+                    alertDialog.show();
+                }
+            }
+        });
     }
 
 

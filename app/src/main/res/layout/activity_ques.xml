@@ -20,34 +20,56 @@
             app:title="Present" />
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="match_parent"
         android:layout_height="72dp"
+
         android:text="TextView" />
+
 
     <Button
         android:id="@+id/btnA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:insetLeft="30dp"
+        android:insetRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+
         android:text="Button" />
 
     <Button
         android:id="@+id/btnB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:insetLeft="30dp"
+        android:insetRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="Button" />
 
     <Button
         android:id="@+id/btnC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:insetLeft="30dp"
+        android:insetRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="Button" />
 
     <Button
         android:id="@+id/btnD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:insetLeft="30dp"
+        android:insetRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="Button" />
 
 </LinearLayout>

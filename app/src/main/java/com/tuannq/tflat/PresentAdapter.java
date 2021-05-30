@@ -48,7 +48,7 @@ public class PresentAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(layout,null);
-        //anh xa view
+        //anh xa vie
         TextView txtTen = (TextView) view.findViewById(R.id.ten);
         TextView txtMota = (TextView) view.findViewById(R.id.mota);
         Present present = presentsList.get(i);
