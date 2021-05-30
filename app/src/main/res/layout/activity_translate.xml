@@ -30,11 +30,11 @@
 
         <TextView
             android:id="@+id/tvWord"
-            android:layout_width="match_parent"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:textSize="24dp"
-            />
+            android:padding="10dp"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/tvMeaning"
@@ -42,7 +42,7 @@
             android:layout_height="580dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textSize="18dp"
-            />
+            android:padding="10dp"
+            android:textSize="18dp" />
     </LinearLayout>
 </ScrollView>

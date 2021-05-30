@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/menuback"
             app:navigationIcon="@drawable/back"
-            app:title="@string/word" />
+            app:title="Favorite" />
     </com.google.android.material.appbar.AppBarLayout>
     <ListView
         android:layout_width="match_parent"
