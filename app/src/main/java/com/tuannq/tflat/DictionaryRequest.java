@@ -96,6 +96,7 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
 
         }
         catch(Exception e){
+            tv.setText("NO WORD!");
             e.printStackTrace();
         }
 
