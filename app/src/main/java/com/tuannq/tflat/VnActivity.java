@@ -3,6 +3,7 @@ package com.tuannq.tflat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.NetworkOnMainThreadException;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -59,8 +60,8 @@ public class VnActivity extends AppCompatActivity {
 
         String word = getIntent().getStringExtra("word");
         String mean = getIntent().getStringExtra("mean");
-
-        if(!word.equals("")&&!!mean.equals("")){
+        Log.d("xxxx", mean+word);
+        if(!word.equals("")&&!mean.equals("")){
             tvTranslate.setText(mean);
             etWord.setText(word);
         }
@@ -97,7 +98,6 @@ public class VnActivity extends AppCompatActivity {
                     TranslateParagraphHistory history = new TranslateParagraphHistory(text, "", inputLang, outputLang);
                     Translator trans = new Translator(tvTranslate, history, database);
                     trans.execute(text);
-                    history.setOutputParagraph(tvTranslate.getText().toString());
                     fragment_listParagraphHistory.list.add(0, history);
                 } else {
                     tvTranslate.setText("- Ngôn ngữ đầu vào và đầu ra giống nhau");

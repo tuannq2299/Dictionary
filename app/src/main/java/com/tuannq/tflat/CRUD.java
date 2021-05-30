@@ -38,7 +38,7 @@ public class CRUD {
     }
 
     public boolean delete(String str){
-        String query = "Delete from paragraph where inputParagraph like "+str;
+        String query = "Delete from paragraph where inputParagraph like '"+str+"'";
         try{
             database.queryData(query);
         }
@@ -67,7 +67,7 @@ public class CRUD {
     }
 
     public ArrayList<TranslateParagraphHistory> getAllParagraph(){
-        String query = "Select * from paragraph order by id desc limit 7";
+        String query = "Select * from paragraph";
         ArrayList<TranslateParagraphHistory> p = new ArrayList<>();
 
         try{

@@ -43,7 +43,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
 
         crud = new CRUD(HistoryActivity.this);
-
+        ArrayList<TranslateParagraphHistory> arrP = crud.getAllParagraph();
         String str = getIntent().getStringExtra("key");
         topAppBar.setTitle(str);
 
@@ -79,7 +79,8 @@ public class HistoryActivity extends AppCompatActivity {
             });
         }
         else{
-            ArrayList<TranslateParagraphHistory> arrP = crud.getAllParagraph();
+
+            Log.d("1", arrP.size()+"zzzzz");
             ParagraphAdapter paragraphAdapter = new ParagraphAdapter(arrP);
             listWords = findViewById(R.id.listWords);
             listWords.setAdapter(paragraphAdapter);
@@ -87,11 +88,11 @@ public class HistoryActivity extends AppCompatActivity {
             listWords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i =new Intent(HistoryActivity.this, TranslateActivity.class);
-                    i.putExtra("para", arrP.get(position).getInputParagraph());
+                    Intent i =new Intent(HistoryActivity.this, VnActivity.class);
+                    i.putExtra("word", arrP.get(position).getInputParagraph());
                     i.putExtra("mean", arrP.get(position).getOutputParagraph());
 //                    if(){
-//                        startActivity(i);
+                        startActivity(i);
 //                    }
                 }
             });
@@ -102,8 +103,8 @@ public class HistoryActivity extends AppCompatActivity {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     if(crud.delete(arrP.get(position).getInputParagraph())){
                         Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
-                        arrW.remove(position);
-                        wordListViewAdapter.notifyDataSetChanged();
+                        arrP.remove(position);
+                        paragraphAdapter.notifyDataSetChanged();
                     }
                     return true;
                 }

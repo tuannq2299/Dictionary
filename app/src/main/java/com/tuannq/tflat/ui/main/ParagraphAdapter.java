@@ -22,7 +22,7 @@ public class ParagraphAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return paragraphs.size();
     }
 
     @Override
@@ -44,9 +44,9 @@ public class ParagraphAdapter extends BaseAdapter {
         else view = convertView;
 
         TranslateParagraphHistory p = (TranslateParagraphHistory) getItem(position);
-        ((TextView) view.findViewById(R.id.word)).setText(p.getInputLang());
-        ((TextView) view.findViewById(R.id.mean)).setText(p.getInputLang());
-        ((TextView) view.findViewById(R.id.examp)).setText(p.getOutputLang());
+        ((TextView) view.findViewById(R.id.word)).setText(p.getInputParagraph());
+        ((TextView) view.findViewById(R.id.mean)).setText(p.getInputLang()+" - " +p.getOutputLang());
+        ((TextView) view.findViewById(R.id.examp)).setText(p.getOutputParagraph());
 
         return view;
     }
