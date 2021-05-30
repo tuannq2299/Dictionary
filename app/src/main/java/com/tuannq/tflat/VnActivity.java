@@ -57,6 +57,14 @@ public class VnActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
         database = new CRUD(VnActivity.this);
 
+        String word = getIntent().getStringExtra("word");
+        String mean = getIntent().getStringExtra("mean");
+
+        if(!word.equals("")&&!!mean.equals("")){
+            tvTranslate.setText(mean);
+            etWord.setText(word);
+        }
+
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -102,11 +102,13 @@ public class Fragment_Home1 extends Fragment {
     }
     public void requestTranslateVi(View v){
         Intent intent = new Intent(getActivity(), VnActivity.class);
+        intent.putExtra("word", "");
+        intent.putExtra("mean", "");
         startActivity(intent);
     }
 
     public void onClickHistory(View v){
-        Intent intent = new Intent(getActivity(), HistoryActivity.class);
+        Intent intent = new Intent(getActivity(), list.class);
         String str = (new Gson()).toJson(words);
         intent.putExtra("arrW", str);
 

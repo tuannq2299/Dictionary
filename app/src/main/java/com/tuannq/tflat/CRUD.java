@@ -37,8 +37,8 @@ public class CRUD {
         return true;
     }
 
-    public boolean delete(TranslateParagraphHistory p){
-        String query = "DROP TABLE paragraph";
+    public boolean delete(String str){
+        String query = "Delete from paragraph where inputParagraph like "+str;
         try{
             database.queryData(query);
         }

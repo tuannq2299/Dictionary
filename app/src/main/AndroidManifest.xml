@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
-        <activity android:name=".SettingActivity"></activity>
-        <receiver android:name=".AlarmReceiver"></receiver>
+        <activity android:name=".list"></activity>
+        <activity android:name=".SettingActivity" />
+
+        <receiver android:name=".AlarmReceiver" />
+
         <activity android:name=".SearchActivity" />
         <activity
             android:name=".TabActivity"

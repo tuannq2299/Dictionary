@@ -14,14 +14,17 @@ import android.widget.Toast;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.tuannq.tflat.ui.main.ParagraphAdapter;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import Model.TranslateParagraphHistory;
 import Model.Word;
 
 public class HistoryActivity extends AppCompatActivity {
     ArrayList<Word> arrW;
+    CRUD crud;
     WordListViewAdapter wordListViewAdapter;
     ListView listWords;
     MaterialToolbar topAppBar;
@@ -29,9 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-
         topAppBar = findViewById(R.id.historyTop);
-        topAppBar.setTitle("History");
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,49 +41,77 @@ public class HistoryActivity extends AppCompatActivity {
                 HistoryActivity.this.finish();
             }
         });
-        String str = getIntent().getStringExtra("arrW");
-        Gson g = new Gson();
-        Type listTye = new TypeToken<ArrayList<Word> >(){}.getType();
-        arrW = g.fromJson(str, listTye);
 
-        wordListViewAdapter = new WordListViewAdapter(arrW);
-        listWords = findViewById(R.id.listWords);
-        listWords.setAdapter(wordListViewAdapter);
+        crud = new CRUD(HistoryActivity.this);
+
+        String str = getIntent().getStringExtra("key");
+        topAppBar.setTitle(str);
+
+        if(str.equals("Dictionary")){
+            arrW = crud.getAllWords();
+            wordListViewAdapter = new WordListViewAdapter(arrW);
+            listWords = findViewById(R.id.listWords);
+            listWords.setAdapter(wordListViewAdapter);
 
 
-        //        Su kien onclick
-        listWords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("1", arrW.get(position).getExamp());
-                if(!arrW.get(position).getExamp().equals(".")){
-//                    Day sang EE
+            //        Su kien onclick
+            listWords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i =new Intent(HistoryActivity.this, TranslateActivity.class);
+                        i.putExtra("word", arrW.get(position).getWord());
+                        startActivity(i);
+                }
+            });
+
+            //   Su kien xoa item
+            listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    CRUD db = new CRUD(HistoryActivity.this);
+                    if(db.deleteWord(arrW.get(position).getWord())){
+                        Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
+                        arrW.remove(position);
+                        wordListViewAdapter.notifyDataSetChanged();
+                    }
+                    return true;
+                }
+            });
+        }
+        else{
+            ArrayList<TranslateParagraphHistory> arrP = crud.getAllParagraph();
+            ParagraphAdapter paragraphAdapter = new ParagraphAdapter(arrP);
+            listWords = findViewById(R.id.listWords);
+            listWords.setAdapter(paragraphAdapter);
+            //        Su kien onclick
+            listWords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i =new Intent(HistoryActivity.this, TranslateActivity.class);
-                    i.putExtra("word", arrW.get(position).getWord());
-                    startActivity(i);
+                    i.putExtra("para", arrP.get(position).getInputParagraph());
+                    i.putExtra("mean", arrP.get(position).getOutputParagraph());
+//                    if(){
+//                        startActivity(i);
+//                    }
                 }
-                else{
-//                    Day sang Viet - ANH
-//                    Intent i =new Intent(FavoriteActivity.this, TranslateActivity.class);
-//                    i.putExtra("word", arrW.get(position).getWord());
-//                    startActivity(i);
-                    Toast.makeText(HistoryActivity.this, "Ben kia chua xu ly", Toast.LENGTH_LONG);
-                }
-            }
-        });
+            });
 
-//   Su kien xoa item
-        listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                CRUD db = new CRUD(HistoryActivity.this);
-                if(db.deleteWord(arrW.get(position).getWord())){
-                    Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
-                    arrW.remove(position);
-                    wordListViewAdapter.notifyDataSetChanged();
+            //   Su kien xoa item
+            listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    if(crud.delete(arrP.get(position).getInputParagraph())){
+                        Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
+                        arrW.remove(position);
+                        wordListViewAdapter.notifyDataSetChanged();
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
+            });
+        }
+
+
+
+
     }
 }
