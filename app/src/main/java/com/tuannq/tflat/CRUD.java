@@ -14,7 +14,7 @@ public class CRUD {
     private SqliConnection database;
     public CRUD(Context c) {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
-        database.queryData("CREATE TABLE IF NOT EXISTS words(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
+        database.queryData("CREATE TABLE IF NOT EXISTS historyWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
         database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
 
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
@@ -35,6 +35,10 @@ public class CRUD {
             return false;
         }
         return true;
+    }
+    public void changeTableName(String s1,String s2){
+        String query=String.format("ALTER TABLE '%s' RENAME TO '%s'",s1,s2);
+        database.queryData(query);
     }
 
     public boolean delete(String str){
@@ -152,7 +156,7 @@ public class CRUD {
 
 //    word
     public void insertWord(Word w){
-            String query = String.format( "insert into words values(null, '%s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
+            String query = String.format( "insert into historyWords values(null, '%s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
             database.queryData(query);
     }
 
@@ -165,7 +169,7 @@ public class CRUD {
         w.setMean("");
         w.setWord("");
         w.setExamp("");
-        String query = "select * from words where word = "+"'"+word+"';";
+        String query = "select * from historyWords where word = "+"'"+word+"';";
         Cursor cursor = database.getData(query);
         if(cursor.moveToNext()){
             w.setWord(cursor.getString(1));
@@ -197,7 +201,7 @@ public class CRUD {
 
     public ArrayList<Word> getAllWords(){
         ArrayList<Word> arr = new ArrayList<>();
-        String query = "select * from words;";
+        String query = "select * from historyWords;";
         Cursor cursor = database.getData(query);
         while(cursor.moveToNext()){
             arr.add(new Word(Integer.parseInt(cursor.getString(0)),cursor.getString(1), cursor.getString(2),cursor.getString(3)));
@@ -216,7 +220,7 @@ public class CRUD {
     }
 
     public boolean deleteWord(String str){
-        String query = "delete from words where word like '"+str+"'";
+        String query = "delete from historyWords where word like '"+str+"'";
         try{
             database.queryData(query);
         }

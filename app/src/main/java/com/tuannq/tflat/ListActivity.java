@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import Model.Word;
 
-public class list extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
     ArrayList<Word> arrI;
     WordListViewAdapter ListViewAdapter;
     ListView listI;
@@ -29,9 +29,9 @@ public class list extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(list.this, MainActivity.class);
+                Intent intent=new Intent(ListActivity.this, MainActivity.class);
                 startActivity(intent);
-                list.this.finish();
+                ListActivity.this.finish();
             }
         });
         String str = getIntent().getStringExtra("arrW");
@@ -46,7 +46,7 @@ public class list extends AppCompatActivity {
         listI.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(list.this, HistoryActivity.class);
+                Intent i = new Intent(ListActivity.this, HistoryActivity.class);
                 i.putExtra("key", arrI.get(position).getWord());
                 startActivity(i);
             }

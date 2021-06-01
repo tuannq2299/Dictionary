@@ -9,17 +9,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -33,8 +29,6 @@ public class Fragment_Home1 extends Fragment {
     Button btnHistory,btnYW,btnVA;
     ArrayList<Word> words;
     ArrayList<Word> yourWords;
-    TabLayout tabLayout;
-    ViewPager viewPager;
     CRUD crud;
     @Nullable
     @Override
@@ -108,7 +102,7 @@ public class Fragment_Home1 extends Fragment {
     }
 
     public void onClickHistory(View v){
-        Intent intent = new Intent(getActivity(), list.class);
+        Intent intent = new Intent(getActivity(), ListActivity.class);
         String str = (new Gson()).toJson(words);
         intent.putExtra("arrW", str);
 

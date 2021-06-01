@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
                 Intent intent = new Intent(MainActivity.this,SettingActivity.class);
                 startActivity(intent);
+                CRUD crud=new CRUD(MainActivity.this);
+                crud.changeTableName("words","historyword");
             }
         });
     }
