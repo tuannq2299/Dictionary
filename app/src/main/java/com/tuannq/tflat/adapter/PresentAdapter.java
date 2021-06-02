@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import Model.Present;
+import com.tuannq.tflat.Model.Present;
+import com.tuannq.tflat.R;
 
 public class PresentAdapter extends BaseAdapter {
 

@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import Model.TranslateParagraphHistory;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.adapter.TPHistoryAdapter;
 
 public class Fragment_ListParagraphHistory extends Fragment {
 
@@ -20,7 +23,7 @@ public class Fragment_ListParagraphHistory extends Fragment {
     RecyclerView.Adapter myAdapter;
     RecyclerView.LayoutManager layoutManager;
     View view;
-    ArrayList<TranslateParagraphHistory> list = new ArrayList<>();
+    public ArrayList<TranslateParagraphHistory> list = new ArrayList<>();
     CRUD database;
 
     public Fragment_ListParagraphHistory() {

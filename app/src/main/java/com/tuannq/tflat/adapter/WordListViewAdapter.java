@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import Model.Word;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
 
 public class WordListViewAdapter extends BaseAdapter {
     final ArrayList<Word> arrW;

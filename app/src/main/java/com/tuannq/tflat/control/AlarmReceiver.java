@@ -1,16 +1,14 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.control;
 
 import android.app.Notification;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Random;
 
-import Model.Word;
+import com.tuannq.tflat.Model.Word;
 
 public class AlarmReceiver extends BroadcastReceiver {
     @Override

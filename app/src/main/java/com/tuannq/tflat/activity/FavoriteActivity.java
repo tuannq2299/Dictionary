@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,10 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import Model.Word;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.adapter.WordListViewAdapter;
 
 public class FavoriteActivity extends AppCompatActivity {
     ArrayList<Word> arrW;

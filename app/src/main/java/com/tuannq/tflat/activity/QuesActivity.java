@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,9 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
-import Model.Question;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.Question;
+import com.tuannq.tflat.R;
 
 public class QuesActivity extends AppCompatActivity {
     MaterialToolbar topAppBar;

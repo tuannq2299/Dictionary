@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".TranslateParagraphActivity">
+    tools:context=".activity.TranslateParagraphActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -24,14 +24,14 @@
 
     <fragment
         android:id="@+id/fragment_history_paragraph"
-        android:name="com.tuannq.tflat.TranslateParagraph"
+        android:name="com.tuannq.tflat.fragment.TranslateParagraph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_translate_paragraph" />
 
     <fragment
         android:id="@+id/fragment_list"
-        android:name="com.tuannq.tflat.Fragment_ListParagraphHistory"
+        android:name="com.tuannq.tflat.fragment.Fragment_ListParagraphHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_list_translate_paragraph_history" />

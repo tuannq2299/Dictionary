@@ -1,4 +1,4 @@
-package Model;
+package com.tuannq.tflat.Model;
 
 import java.io.Serializable;
 

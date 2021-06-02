@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,10 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
-import Model.Present;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.Present;
+import com.tuannq.tflat.adapter.PresentAdapter;
+import com.tuannq.tflat.R;
 
 public class PresentActivity extends AppCompatActivity {
 

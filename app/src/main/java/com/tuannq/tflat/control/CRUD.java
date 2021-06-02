@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.control;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,9 +6,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import Model.Question;
-import Model.TranslateParagraphHistory;
-import Model.Word;
+import com.tuannq.tflat.Model.Question;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
+import com.tuannq.tflat.Model.Word;
 
 public class CRUD {
     private SqliConnection database;
@@ -22,6 +22,7 @@ public class CRUD {
 
         database.queryData("CREATE TABLE IF NOT EXISTS paragraph(id INTEGER PRIMARY KEY AUTOINCREMENT, inputParagraph VARCHAR(255), outputParagraph VARCHAR(255), inputLang VARCHAR(255)" +
                 ", outputLang VARCHAR(255))");
+
     }
     //    Paragrap
     public boolean insertParagrap(TranslateParagraphHistory p){
@@ -265,10 +266,10 @@ public class CRUD {
     }
 
 
-    public void fakeData(){
-//        database.queryData("INSERT INTO questions VALUES(null, '1. The wedding party________ held at the Rex Hotel.', 'A. is', 'B. is being', 'C. will be', 'D. is going to be', 'C. will be', '1'),(null, '2. How many languages_____ John speak?', 'A. do', 'B. does', 'C. did', 'D. will', 'B. does', '1'),(null, '4. Angelina Jolie is a famous actress. She ________ in several film.', 'A. appears', 'B. is appearing', 'C. appeared', 'D. has appeared', 'D-. has appeared', '1')");
-        database.queryData("INSERT INTO questions VALUES(null, '5. I saw Maggie at the party. She ________ in several film.', 'A. wears', 'B. wore', 'C. was wearing', 'D. has worn', 'C. was wearing', '1'),(null, '6. What time________ the next train leave?', 'A. does', 'B. will', 'C. shall', 'D. would', 'A. does', '2'),(null, '7. Monica________ with her sister at the moment until she finds a flat.', 'A. stays', 'B. is staying', 'C. will stay', 'D. is going to stay', 'B. is staying', '2')");
-    }
+//    public void fakeData(){
+////        database.queryData("INSERT INTO questions VALUES(null, '1. The wedding party________ held at the Rex Hotel.', 'A. is', 'B. is being', 'C. will be', 'D. is going to be', 'C. will be', '1'),(null, '2. How many languages_____ John speak?', 'A. do', 'B. does', 'C. did', 'D. will', 'B. does', '1'),(null, '4. Angelina Jolie is a famous actress. She ________ in several film.', 'A. appears', 'B. is appearing', 'C. appeared', 'D. has appeared', 'D-. has appeared', '1')");
+//        database.queryData("INSERT INTO questions VALUES(null, '1. The wedding party________ held at the Rex Hotel.', 'A. is', 'B. is being', 'C. will be', 'D. is going to be', 'C. will be', '1'),(null, '2. How many languages_____ John speak?', 'A. do', 'B. does', 'C. did', 'D. will', 'B. does', '1'),(null, '3. Hurry! The train________ I do not want to miss it.', 'A. comes', 'B. is coming', 'C. came', 'D. has come', 'B. is coming', '1'),(null, '4. Angelina Jolie is a famous actress. She ______ in several film.', 'A. appears', 'B. is appearing', 'C. appeared', 'D. has appeared', 'D-. has appeared', '1'),(null, '5. I saw Maggie at the party. She ______ in several film.', 'A. wears', 'B. wore', 'C. was wearing', 'D. has worn', 'C. was wearing', '1'),(null, '6. What time________ the next train leave?', 'A. does', 'B. will', 'C. shall', 'D. would', 'A. does', '2'),(null, '7. Monica________ with her sister at the moment until she finds a flat.', 'A. stays', 'B. is staying', 'C. will stay', 'D. is going to stay', 'B. is staying', '2'),(null, '8. After I________ lunch, I looked for my bag.', 'A. had', 'B. had had', 'C. have has', 'D. have had', 'B. had had', '2'),(null, '9. By the end of next year, George________ English for 2 years.', 'A. will have learned', 'B. will learn', 'C. has leaned', 'D. would learn', 'A. will have learned', '2'),(null, '10. The man got out of the car,_______ round to the back and opened the boot.', 'A. walking', 'B. walked', 'C. walks', 'D. walk', 'B. walked', '2'),(null, '11. For several years his ambition ______ to be a pilot.', 'A. is', 'B. has been', 'C. was', 'D. had been', 'B. has been', '3'),(null, '12. Henry________ into the restaurant when the writer was having dinner.', 'A. was going', 'B. went', 'C. has gone', 'D. did go', 'B. went', '3'),(null, '13. He will take the dog out for a walk as soon as he ______ dinner.', 'A. finish', 'B. finishes', 'C. will finish', 'D. shall have finished', 'B. finishes', '3'),(null, '14. Before you asked, the letter________', 'A. was written', 'B. had been written', 'C. had written', 'D. has been written', 'B. had been written', '3'),(null, '15. She ______ English at RMIT these days.', 'A. studies', 'B. is studying', 'C. will study', 'D. is gong to study', 'B. is studying', '3');");
+//    }
 }
 
 //    CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)), c VARCHAR(255)), d VARCHAR(255), rs VARCHAR(255))

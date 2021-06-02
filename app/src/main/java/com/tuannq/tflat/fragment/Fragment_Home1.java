@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,13 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import Model.Word;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.activity.FavoriteActivity;
+import com.tuannq.tflat.activity.ListActivity;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.activity.TranslateActivity;
+import com.tuannq.tflat.activity.TranslateParagraphActivity;
 
 public class Fragment_Home1 extends Fragment {
     ImageView ivSearch;

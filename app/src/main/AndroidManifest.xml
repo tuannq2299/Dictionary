@@ -11,17 +11,17 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
-        <activity android:name=".ListActivity"></activity>
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".activity.ListActivity"></activity>
+        <activity android:name=".activity.SettingActivity" />
 
-        <activity android:name=".PresentActivity" />
-        <activity android:name=".QuesActivity" />
+        <activity android:name=".activity.PresentActivity" />
+        <activity android:name=".activity.QuesActivity" />
 
-        <receiver android:name=".AlarmReceiver" />
+        <receiver android:name=".control.AlarmReceiver" />
 
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".activity.SearchActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/title_activity_tab"
             android:theme="@style/Theme.TFlat.NoActionBar">
             <intent-filter>
@@ -30,10 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FavoriteActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".TranslateParagraphActivity" />
-        <activity android:name=".TranslateActivity" />
+        <activity android:name=".activity.FavoriteActivity" />
+        <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.TranslateParagraphActivity" />
+        <activity android:name=".activity.TranslateActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.control;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Color;
+
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.activity.TranslateActivity;
 
 public class NotificationHelper extends ContextWrapper {
 

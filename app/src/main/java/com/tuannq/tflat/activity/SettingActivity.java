@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.tuannq.tflat.control.AlarmReceiver;
+import com.tuannq.tflat.R;
 
 public class SettingActivity extends AppCompatActivity {
     Switch switchNoti;
@@ -36,7 +38,7 @@ public class SettingActivity extends AppCompatActivity {
                 SettingActivity.this.finish();
             }
         });
-        Intent intent = new Intent(this,AlarmReceiver.class);
+        Intent intent = new Intent(this, AlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(this, 0,intent, 0 );
         switchNoti.setChecked(sp.getBoolean("switchNoti",false));
         switchNoti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

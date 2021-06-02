@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.tuannq.tflat.Fragment_Home1;
-import com.tuannq.tflat.Fragment_Home2;
+import com.tuannq.tflat.fragment.Fragment_Home1;
+import com.tuannq.tflat.fragment.Fragment_Home2;
 import com.tuannq.tflat.R;
 
 /**

@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,9 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
-import Model.Word;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.adapter.WordListViewAdapter;
 
 public class ListActivity extends AppCompatActivity {
     ArrayList<Word> arrI;

@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +11,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.adapter.WordListViewAdapter;
 import com.tuannq.tflat.ui.main.ParagraphAdapter;
 
 import java.util.ArrayList;
 
-import Model.TranslateParagraphHistory;
-import Model.Word;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
+import com.tuannq.tflat.Model.Word;
 
 public class HistoryActivity extends AppCompatActivity {
     ArrayList<Word> arrW;

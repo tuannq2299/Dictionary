@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.control;
 
 import android.content.Context;
 import android.database.Cursor;

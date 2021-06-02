@@ -1,4 +1,4 @@
-package Model;
+package com.tuannq.tflat.Model;
 
 public class Question {
     private int id;

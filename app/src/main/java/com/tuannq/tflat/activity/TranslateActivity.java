@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,7 +12,11 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-import Model.Word;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.control.DictionaryRequest;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
+
 
 public class TranslateActivity extends AppCompatActivity {
     TextView tvWord,tvMeaning;
@@ -87,7 +91,7 @@ public class TranslateActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.search:
-                        Intent intent=new Intent(TranslateActivity.this,SearchActivity.class);
+                        Intent intent=new Intent(TranslateActivity.this, SearchActivity.class);
                         startActivity(intent);
                         break;
 

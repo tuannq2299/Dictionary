@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,7 +14,9 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 
-import Model.Word;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.R;
 
 public class SearchActivity extends AppCompatActivity {
     AutoCompleteTextView editSearch;

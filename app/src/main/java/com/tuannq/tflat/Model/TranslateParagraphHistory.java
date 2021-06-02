@@ -1,4 +1,4 @@
-package Model;
+package com.tuannq.tflat.Model;
 
 public class TranslateParagraphHistory {
     private int id;

@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import Model.TranslateParagraphHistory;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
+import com.tuannq.tflat.R;
 
 // tạo adapter riêng cho custom recyclerView
 public class TPHistoryAdapter extends RecyclerView.Adapter<TPHistoryAdapter.ViewHolder> {

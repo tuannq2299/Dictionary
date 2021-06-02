@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.tuannq.tflat.R;
 
 import java.util.ArrayList;
-import Model.TranslateParagraphHistory;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
 
 
 public class ParagraphAdapter extends BaseAdapter {

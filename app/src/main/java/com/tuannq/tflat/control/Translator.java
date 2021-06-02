@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.control;
 //
 import android.os.AsyncTask;
 import android.widget.TextView;
@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import Model.TranslateParagraphHistory;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
 
 public class Translator extends AsyncTask<String,Integer,String> {
     TextView textView;

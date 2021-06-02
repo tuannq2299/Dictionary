@@ -1,4 +1,4 @@
-package com.tuannq.tflat;
+package com.tuannq.tflat.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,11 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-import Model.TranslateParagraphHistory;
+import com.tuannq.tflat.control.CRUD;
+import com.tuannq.tflat.Model.TranslateParagraphHistory;
+import com.tuannq.tflat.R;
+import com.tuannq.tflat.control.Translator;
+import com.tuannq.tflat.fragment.Fragment_ListParagraphHistory;
 
 public class TranslateParagraphActivity extends AppCompatActivity {
 
