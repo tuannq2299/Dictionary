@@ -14,6 +14,9 @@
         <activity android:name=".ListActivity"></activity>
         <activity android:name=".SettingActivity" />
 
+        <activity android:name=".PresentActivity" />
+        <activity android:name=".QuesActivity" />
+
         <receiver android:name=".AlarmReceiver" />
 
         <activity android:name=".SearchActivity" />
