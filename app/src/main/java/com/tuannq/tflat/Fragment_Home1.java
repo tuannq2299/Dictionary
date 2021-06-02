@@ -70,6 +70,7 @@ public class Fragment_Home1 extends Fragment {
             }
         });
         CRUD crud = new CRUD(getActivity());
+        crud.insertData("");
 //        crud.insertFavoriteWord(new Word(1,"turtle","Con rùa", "."));
 //        crud.insertFavoriteWord(new Word(1,"horse","Con ngựa", "."));
 //        crud.insertFavoriteWord(new Word(1,"Tiger","Con hổ", "."));

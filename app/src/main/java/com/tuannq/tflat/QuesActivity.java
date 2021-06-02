@@ -47,13 +47,7 @@ public class QuesActivity extends AppCompatActivity {
         String keyword = getIntent().getStringExtra("keyword"); //thtd
         //CRUD
         CRUD crud = new CRUD(QuesActivity.this);
-        //Get Question để test sau này sửa sau
-        //Làm xong insert 3-4 câu hỏi để test nghiệp vụ xem đúng logic không
-        //Sửa lại cái này khi chuyền được thông điệp từ bên kia sang
-        //
-        ;
-        questionArrayList = crud.getAllQuestion();
-        //questionArrayList=crud.getAllQuestionByType(keyword);
+        questionArrayList=crud.getAllQuestionByType(keyword);
 
         if(index==0){
             renderQuestion(questionArrayList.get(index));

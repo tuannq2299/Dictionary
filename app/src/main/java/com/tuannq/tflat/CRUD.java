@@ -16,10 +16,11 @@ public class CRUD {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
         database.queryData("CREATE TABLE IF NOT EXISTS words(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
         database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
-       //database.queryData("Drop table questions");
-        database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255), a VARCHAR(255), b VARCHAR(255)" +
+//       database.queryData("Drop table questions");
+        database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(255) UNIQUE, a VARCHAR(255), b VARCHAR(255)" +
                 ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255), _group VARCHAR(255))");
         //database.queryData("insert into questions values(null, 'question', 'a', 'b','c','d', 'c','thtd')");
+        //database.queryData("INSERT INTO questions VALUES(null, '1. The wedding party________ held at the Rex Hotel.', 'A. is', 'B. is being', 'C. will be', 'D. is going to be', 'C. will be', '1')");
     }
 
 //    question
@@ -187,6 +188,24 @@ public ArrayList<Question> getAllQuestionByType(String group){
         return true;
     }
 
+    public void insertData(String str){
+        //database.queryData(
+
+
+//                "INSERT INTO questions VALUES(null, '3. Hurry! The train________ I don't want to miss it.', 'A. comes', 'B. is coming', 'C. came', 'D. has come', 'B. is coming', '1');\n" +
+//                "INSERT INTO questions VALUES(null, '4. Angelina Jolie is a famous actress. She ________ in several film.', 'A. appears', 'B. is appearing', 'C. appeared', 'D. has appeared', 'D-. has appeared', '1');\n" +
+  //              "INSERT INTO questions VALUES(null, '5. I saw Maggie at the party. She ________ in several film.', 'A. wears', 'B. wore', 'C. was wearing', 'D. has worn', 'C. was wearing', '1');\n" +
+ //               "INSERT INTO questions VALUES(null, '6. What time________ the next train leave?', 'A. does', 'B. will', 'C. shall', 'D. would', 'A. does', '2');\n" +
+   //             "INSERT INTO questions VALUES(null, '7. Monica________ with her sister at the moment until she finds a flat.', 'A. stays', 'B. is staying', 'C. will stay', 'D. is going to stay', 'B. is staying', '2');\n" +
+   //             "INSERT INTO questions VALUES(null, '8. After I________ lunch, I looked for my bag.', 'A. had', 'B. had had', 'C. have has', 'D. have had', 'B. had had', '2');\n" +
+    //            "INSERT INTO questions VALUES(null, '9. By the end of next year, George________ English for 2 years.', 'A. will have learned', 'B. will learn', 'C. has leaned', 'D. would learn', 'A. will have learned', '2');\n" +
+     //           "INSERT INTO questions VALUES(null, '10. The man got out of the car,_______ round to the back and opened the boot.', 'A. walking', 'B. walked', 'C. walks', 'D. walk', 'B. walked', '2');\n" +
+      //          "INSERT INTO questions VALUES(null, '11. For several years his ambition ________ to be a pilot.', 'A. is', 'B. has been', 'C. was', 'D. had been', 'B. has been', '3');\n" +
+       //         "INSERT INTO questions VALUES(null, '12. Henry________ into the restaurant when the writer was having dinner.', 'A. was going', 'B. went', 'C. has gone', 'D. did go', 'B. went', '3');\n" +
+        //        "INSERT INTO questions VALUES(null, '13. He will take the dog out for a walk as soon as he ________ dinner.', 'A. finish', 'B. finishes', 'C. will finish', 'D. shall have finished', 'B. finishes', '3');\n" +
+         //       "INSERT INTO questions VALUES(null, '14. Before you asked, the letter________', 'A. was written', 'B. had been written', 'C. had written', 'D. has been written', 'B. had been written', '3');\n" +
+          //      "INSERT INTO questions VALUES(null, '15. She ________ English at RMIT these days.', 'A. studies', 'B. is studying', 'C. will study', 'D. is gong to study', 'B. is studying', '3');");
+    }
 
 }
 
