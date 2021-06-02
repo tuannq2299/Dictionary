@@ -40,8 +40,9 @@ public class QuesActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(QuesActivity.this, PresentActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(QuesActivity.this, PresentActivity.class);
+//                startActivity(i);
+                QuesActivity.this.finish();
             }
         });
         init();

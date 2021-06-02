@@ -124,8 +124,8 @@ public class TranslateParagraphActivity extends AppCompatActivity {
                 if (fragmentManager.findFragmentById(R.id.fragment_list).isVisible()){
                     fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
                 } else {
-                    Intent intent = new Intent(TranslateParagraphActivity.this, MainActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(TranslateParagraphActivity.this, MainActivity.class);
+//                    startActivity(intent);
                     TranslateParagraphActivity.this.finish();
                 }
             }

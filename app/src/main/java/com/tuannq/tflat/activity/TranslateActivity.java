@@ -41,8 +41,8 @@ public class TranslateActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TranslateActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(TranslateActivity.this, MainActivity.class);
+//                startActivity(intent);
                 TranslateActivity.this.finish();
             }
         });

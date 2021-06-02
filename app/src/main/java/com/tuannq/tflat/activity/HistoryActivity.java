@@ -35,8 +35,8 @@ public class HistoryActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(HistoryActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(HistoryActivity.this, MainActivity.class);
+//                startActivity(intent);
                 HistoryActivity.this.finish();
             }
         });

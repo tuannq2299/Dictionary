@@ -33,8 +33,8 @@ public class PresentActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PresentActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(PresentActivity.this, MainActivity.class);
+//                startActivity(intent);
                 PresentActivity.this.finish();
             }
         });

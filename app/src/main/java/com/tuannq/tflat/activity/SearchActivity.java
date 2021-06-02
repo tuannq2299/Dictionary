@@ -39,8 +39,8 @@ public class SearchActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SearchActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(SearchActivity.this, MainActivity.class);
+//                startActivity(intent);
                 SearchActivity.this.finish();
             }
         });

@@ -33,8 +33,8 @@ public class SettingActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SettingActivity.this, MainActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(SettingActivity.this, MainActivity.class);
+//                startActivity(intent);
                 SettingActivity.this.finish();
             }
         });
@@ -46,7 +46,7 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 if(isChecked){
-                    long interval = 60000;
+                    long interval = 86400000;
                     manager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+interval,interval,alarmIntent);
                     editor.putBoolean("switchNoti",true).apply();
                 }
