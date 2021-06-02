@@ -22,7 +22,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 import Model.TranslateParagraphHistory;
 
-public class VnActivity extends AppCompatActivity {
+public class TranslateParagraphActivity extends AppCompatActivity {
 
     AutoCompleteTextView etWord;
     ImageView ivSearch;
@@ -38,7 +38,7 @@ public class VnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) throws NetworkOnMainThreadException {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vn);
+        setContentView(R.layout.activity_translate_paragraph);
         etWord = findViewById(R.id.etWord_EN_VN);
         ivSearch = findViewById(R.id.ivSearch_VI);
         tvTranslate = findViewById(R.id.tvTranslate_VI);
@@ -55,7 +55,7 @@ public class VnActivity extends AppCompatActivity {
         fragmentManager = this.getSupportFragmentManager();
         fragment_listParagraphHistory = (Fragment_ListParagraphHistory) fragmentManager.findFragmentById(R.id.fragment_list);
         fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
-        database = new CRUD(VnActivity.this);
+        database = new CRUD(TranslateParagraphActivity.this);
 
         String word = getIntent().getStringExtra("word");
         String mean = getIntent().getStringExtra("mean");
@@ -117,9 +117,13 @@ public class VnActivity extends AppCompatActivity {
         topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(VnActivity.this, MainActivity.class);
-                startActivity(intent);
-                VnActivity.this.finish();
+                if (fragmentManager.findFragmentById(R.id.fragment_list).isVisible()){
+                    fragmentManager.beginTransaction().hide(fragmentManager.findFragmentById(R.id.fragment_list)).show(fragmentManager.findFragmentById(R.id.fragment_history_paragraph)).commit();
+                } else {
+                    Intent intent = new Intent(TranslateParagraphActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    TranslateParagraphActivity.this.finish();
+                }
             }
         });
 
@@ -129,10 +133,10 @@ public class VnActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.favorite:
-                        Toast.makeText(VnActivity.this,"Favorite",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TranslateParagraphActivity.this,"Favorite",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.search:
-                        Toast.makeText(VnActivity.this,"Search",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TranslateParagraphActivity.this,"Search",Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return false;

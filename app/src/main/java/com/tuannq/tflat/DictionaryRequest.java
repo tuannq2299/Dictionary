@@ -1,20 +1,18 @@
 package com.tuannq.tflat;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import javax.net.ssl.HttpsURLConnection;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     final String app_id = "6b1f6cae";
@@ -96,6 +94,7 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
 
         }
         catch(Exception e){
+            tv.setText("NO WORD!");
             e.printStackTrace();
         }
 

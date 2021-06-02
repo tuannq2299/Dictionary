@@ -32,7 +32,7 @@ public class Fragment_ListParagraphHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_list, container, false);
+        view = inflater.inflate(R.layout.fragment_list_translate_paragraph_history, container, false);
         return view;
     }
 

@@ -5,8 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".VnActivity">
+    tools:context=".TranslateParagraphActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarVN"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menuback"
+            app:navigationIcon="@drawable/back"
+            app:title="History" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
         android:id="@+id/fragment_history_paragraph"
@@ -20,6 +34,6 @@
         android:name="com.tuannq.tflat.Fragment_ListParagraphHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list_translate_paragraph_history" />
 
 </LinearLayout>

@@ -1,7 +1,5 @@
 package com.tuannq.tflat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.tuannq.tflat.ui.main.ParagraphAdapter;
@@ -84,7 +84,7 @@ public class HistoryActivity extends AppCompatActivity {
             listWords.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent i =new Intent(HistoryActivity.this, VnActivity.class);
+                    Intent i =new Intent(HistoryActivity.this, TranslateParagraphActivity.class);
                     i.putExtra("word", arrP.get(position).getInputParagraph());
                     i.putExtra("mean", arrP.get(position).getOutputParagraph());
 //                    if(){

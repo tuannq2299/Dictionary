@@ -37,7 +37,7 @@ public class TPHistoryAdapter extends RecyclerView.Adapter<TPHistoryAdapter.View
     @NonNull
     @Override
     public TPHistoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_items, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_items_paragraph_history, viewGroup, false);
         return new ViewHolder(v);
     }
 

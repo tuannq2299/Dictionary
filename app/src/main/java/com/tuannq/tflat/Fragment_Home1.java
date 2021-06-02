@@ -14,10 +14,8 @@ import androidx.viewpager.widget.ViewPager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -101,7 +99,7 @@ public class Fragment_Home1 extends Fragment {
         }
     }
     public void requestTranslateVi(View v){
-        Intent intent = new Intent(getActivity(), VnActivity.class);
+        Intent intent = new Intent(getActivity(), TranslateParagraphActivity.class);
         intent.putExtra("word", "");
         intent.putExtra("mean", "");
         startActivity(intent);
