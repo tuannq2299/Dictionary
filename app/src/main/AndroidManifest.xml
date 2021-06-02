@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.TFlat.NoActionBar">
-        <activity android:name=".list"></activity>
+        <activity android:name=".ListActivity"></activity>
         <activity android:name=".SettingActivity" />
+
+        <activity android:name=".PresentActivity" />
+        <activity android:name=".QuesActivity" />
 
         <receiver android:name=".AlarmReceiver" />
 

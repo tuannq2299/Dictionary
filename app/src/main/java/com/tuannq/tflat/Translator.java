@@ -71,8 +71,7 @@ public class Translator extends AsyncTask<String,Integer,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         try{
-            textView.setText("Đoạn văn đã dịch nghĩa:\n"
-                    + "- "+ s);
+            textView.setText(s);
             // kiểm tra có output paragraph hay không
             if (!s.equals("")) {
                 history.setOutputParagraph(s);
