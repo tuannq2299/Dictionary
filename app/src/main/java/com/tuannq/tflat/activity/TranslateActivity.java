@@ -59,11 +59,11 @@ public class TranslateActivity extends AppCompatActivity {
 
         if(isFavorite==true){
             fav.setIcon(R.drawable.favorite);
-            Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
         }
         else{
             fav.setIcon(R.drawable.no_favorite);
-            Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
         }
         topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

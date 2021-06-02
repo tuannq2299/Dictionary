@@ -14,7 +14,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.tuannq.tflat.control.CRUD;
 import com.tuannq.tflat.R;
 import com.tuannq.tflat.adapter.WordListViewAdapter;
-import com.tuannq.tflat.ui.main.ParagraphAdapter;
+import com.tuannq.tflat.adapter.ParagraphAdapter;
 
 import java.util.ArrayList;
 

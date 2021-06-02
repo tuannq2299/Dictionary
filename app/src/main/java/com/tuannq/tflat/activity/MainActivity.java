@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.tuannq.tflat.R;
-import com.tuannq.tflat.ui.main.SectionsPagerAdapter;
+import com.tuannq.tflat.adapter.SectionsPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     @Override

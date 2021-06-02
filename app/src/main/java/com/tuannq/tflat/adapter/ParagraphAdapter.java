@@ -1,4 +1,4 @@
-package com.tuannq.tflat.ui.main;
+package com.tuannq.tflat.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
