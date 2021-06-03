@@ -35,6 +35,14 @@ public class TranslateActivity extends AppCompatActivity {
         this.w = w;
     }
 
+    public TextView getTvMeaning() {
+        return tvMeaning;
+    }
+
+    public void setTvMeaning(TextView tvMeaning) {
+        this.tvMeaning = tvMeaning;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +54,7 @@ public class TranslateActivity extends AppCompatActivity {
         tvWord.setText(word);
         url = dictionaryEntries(word);
         topAppBar = findViewById(R.id.topAppBar);
-        DictionaryRequest dr = new DictionaryRequest(tvMeaning,this,word);
+        DictionaryRequest dr = new DictionaryRequest(this,word);
         dr.execute(url);
  //       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         topAppBar.setTitle(tvWord.getText().toString());

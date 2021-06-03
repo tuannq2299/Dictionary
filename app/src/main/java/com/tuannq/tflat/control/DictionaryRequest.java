@@ -24,8 +24,8 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     TextView tv;
     TranslateActivity context;
     String word;
-    public DictionaryRequest(TextView tv, TranslateActivity context, String w) {
-        this.tv= tv;
+    public DictionaryRequest(TranslateActivity context, String w) {
+        this.tv= context.getTvMeaning();
         this.context=context;
         this.word=w;
     }
@@ -68,13 +68,13 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
 
             JSONObject lEntries = results.getJSONObject(0);
             JSONArray lArr = lEntries.getJSONArray("lexicalEntries");
-//
+
             JSONObject entries = lArr.getJSONObject(0);
             JSONArray e = entries.getJSONArray("entries");
-//
+
             JSONObject temp = e.getJSONObject(0);
             JSONArray temp1 = temp.getJSONArray("senses");
-//
+
             JSONObject temp2 = temp1.getJSONObject(0);
             JSONArray def = temp2.getJSONArray("definitions");
             JSONArray ex = temp2.getJSONArray("examples");
@@ -119,7 +119,7 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
 
         }
         catch(Exception e){
-            //tv.setText("NO WORD!");
+            tv.setText("NO WORD!");
             e.printStackTrace();
         }
 
