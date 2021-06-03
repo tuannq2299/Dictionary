@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import com.tuannq.tflat.adapter.WordListViewAdapter;
 import com.tuannq.tflat.control.CRUD;
 import com.tuannq.tflat.control.DictionaryRequest;
 import com.tuannq.tflat.Model.Word;
@@ -76,6 +77,7 @@ public class TranslateActivity extends AppCompatActivity {
                             Word temp =new Word();
                             temp.setWord(word);
                             crud.updateFavorite(temp,1);
+
                             Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
                         }
                         else{

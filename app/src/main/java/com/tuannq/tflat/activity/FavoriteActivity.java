@@ -43,10 +43,11 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
         String str = getIntent().getStringExtra("arrW");
-        Gson g = new Gson();
-        Type listType = new TypeToken<ArrayList<Word> >(){}.getType();
-        arrW = g.fromJson(str, listType);
-
+//        Gson g = new Gson();
+//        Type listType = new TypeToken<ArrayList<Word> >(){}.getType();
+        CRUD crud = new CRUD(this);
+//        arrW = g.fromJson(str, listType);
+        arrW = crud.getFavoriteWords();
         wordListViewAdapter = new WordListViewAdapter(arrW);
         listView = findViewById(R.id.listWords);
         listView.setAdapter(wordListViewAdapter);
