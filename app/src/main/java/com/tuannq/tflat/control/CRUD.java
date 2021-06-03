@@ -183,7 +183,7 @@ public class CRUD {
     }
 
     public void insertFavoriteWord(Word w){
-        String query = String.format( "insert into favoriteWords values(null,' %s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
+        String query = String.format( "insert into favoriteWords values(null,'%s', '%s', '%s')", w.getWord(), w.getMean(), w.getExamp());
         database.queryData(query);
     }
     public Word findWord(String word){
@@ -215,7 +215,7 @@ public class CRUD {
             database.queryData(query);
         }
         else{
-            String query = String.format( "insert into favoriteWords values(null,' %s', '%s', '%s')", w, word.getMean(), word.getExamp());
+            String query = String.format( "insert into favoriteWords values(null,'%s', '%s', '%s')", w, word.getMean(), word.getExamp());
             database.queryData(query);
         }
 

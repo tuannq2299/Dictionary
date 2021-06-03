@@ -24,6 +24,7 @@ public class TranslateActivity extends AppCompatActivity {
     String url,word;
     MaterialToolbar topAppBar;
     CRUD crud;
+    boolean isFavorite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class TranslateActivity extends AppCompatActivity {
             }
         });
         MenuItem fav= (MenuItem) topAppBar.getMenu().findItem(R.id.favorite);
-        boolean isFavorite = crud.checkFavorite(word);
+        isFavorite = crud.checkFavorite(word);
 
 //        Kiem tra xem tu da co trong lich su chua va luu vao lich su
         if(crud.findWord(word).getWord().equals(word)){
@@ -70,15 +71,15 @@ public class TranslateActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch(item.getItemId()){
                     case R.id.favorite:
-                        boolean mstate = item.isChecked();
+                        boolean mstate = isFavorite;
                         if(mstate==false){
                             item.setChecked(!mstate);
                             item.setIcon(R.drawable.favorite);
                             Word temp =new Word();
                             temp.setWord(word);
                             crud.updateFavorite(temp,1);
-
-                            Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
+                            isFavorite=item.isChecked();
+                            //Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
                         }
                         else{
                             item.setChecked(!mstate);
@@ -86,7 +87,8 @@ public class TranslateActivity extends AppCompatActivity {
                             Word temp =new Word();
                             temp.setWord(word);
                             crud.updateFavorite(temp,0);
-                            Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
+                            isFavorite=item.isChecked();
+                           // Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case R.id.search:
