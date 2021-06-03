@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,7 @@ public class TranslateActivity extends AppCompatActivity {
     CRUD crud;
     boolean isFavorite;
     Word w;
-
+    ImageView ivAudio;
     public Word getW() {
         return w;
     }
@@ -39,8 +40,8 @@ public class TranslateActivity extends AppCompatActivity {
         return tvMeaning;
     }
 
-    public void setTvMeaning(TextView tvMeaning) {
-        this.tvMeaning = tvMeaning;
+    public ImageView getIvAudio() {
+        return ivAudio;
     }
 
     @Override
@@ -54,6 +55,7 @@ public class TranslateActivity extends AppCompatActivity {
         tvWord.setText(word);
         url = dictionaryEntries(word);
         topAppBar = findViewById(R.id.topAppBar);
+        ivAudio=findViewById(R.id.ivAudio);
         DictionaryRequest dr = new DictionaryRequest(this,word);
         dr.execute(url);
  //       getSupportActionBar().setDisplayHomeAsUpEnabled(true);

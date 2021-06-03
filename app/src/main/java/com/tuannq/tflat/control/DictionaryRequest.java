@@ -1,6 +1,12 @@
 package com.tuannq.tflat.control;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +18,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -24,8 +32,10 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     TextView tv;
     TranslateActivity context;
     String word;
+    ImageView ivAudio;
     public DictionaryRequest(TranslateActivity context, String w) {
         this.tv= context.getTvMeaning();
+        this.ivAudio=context.getIvAudio();
         this.context=context;
         this.word=w;
     }
@@ -63,26 +73,35 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         try{
-            JSONObject js = new JSONObject(s);
-            JSONArray results = js.getJSONArray("results");
+            JSONObject js = new JSONObject(s).getJSONArray("results")
+                    .getJSONObject(0).getJSONArray("lexicalEntries")
+                    .getJSONObject(0).getJSONArray("entries")
+                    .getJSONObject(0);
+            String audioURL= (String) js.getJSONArray("pronunciations").getJSONObject(0).getString("audioFile");
 
-            JSONObject lEntries = results.getJSONObject(0);
-            JSONArray lArr = lEntries.getJSONArray("lexicalEntries");
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            try {
+                mediaPlayer.setDataSource(audioURL);
+                mediaPlayer.prepare();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ivAudio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mediaPlayer.start();
+                }
+            });
 
-            JSONObject entries = lArr.getJSONObject(0);
-            JSONArray e = entries.getJSONArray("entries");
+            JSONObject jsWord=js.getJSONArray("senses").getJSONObject(0);
+            JSONArray def = jsWord.getJSONArray("definitions");
+            JSONArray ex = jsWord.getJSONArray("examples");
+            JSONArray syn = jsWord.getJSONArray("synonyms");
 
-            JSONObject temp = e.getJSONObject(0);
-            JSONArray temp1 = temp.getJSONArray("senses");
-
-            JSONObject temp2 = temp1.getJSONObject(0);
-            JSONArray def = temp2.getJSONArray("definitions");
-            JSONArray ex = temp2.getJSONArray("examples");
-            JSONArray syn = temp2.getJSONArray("synonyms");
             String list_ex="";
             String eg="";
             for(int i=0;i<ex.length();i++){
-
                 String example=ex.getJSONObject(i).getString("text");
                 if(i==0){
                     eg=example;
@@ -102,7 +121,6 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
             rs1=rs1.replace("'","");
             eg=eg.replace("'","");
 
-//            Log.d("temp","Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
             CRUD crud=new CRUD(context);
             Word w=new Word();
             w.setWord(word);
@@ -115,8 +133,6 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
                 crud.insertWord(new Word(1, word, rs1, eg));
             }
             tv.setText("Defintion:\n"+rs1+"\n\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
-
-
         }
         catch(Exception e){
             tv.setText("NO WORD!");
