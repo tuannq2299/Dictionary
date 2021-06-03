@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/fragment_history_paragraph"
-        android:name="com.tuannq.tflat.fragment.TranslateParagraph"
+        android:name="com.tuannq.tflat.fragment.Fragment_TranslateParagraph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_translate_paragraph" />

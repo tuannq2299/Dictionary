@@ -30,6 +30,7 @@ public class SettingActivity extends AppCompatActivity {
         sp = this.getSharedPreferences("status",MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         toolbar=findViewById(R.id.topSetting);
+        toolbar.setTitle("Setting");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

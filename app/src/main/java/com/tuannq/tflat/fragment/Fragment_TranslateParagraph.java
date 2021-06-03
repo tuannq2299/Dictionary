@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 import com.tuannq.tflat.R;
 
 
-public class TranslateParagraph extends Fragment {
+public class Fragment_TranslateParagraph extends Fragment {
 
-    public TranslateParagraph() {
+    public Fragment_TranslateParagraph() {
         // Required empty public constructor
     }
 
