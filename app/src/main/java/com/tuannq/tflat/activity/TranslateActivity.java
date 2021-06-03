@@ -56,7 +56,6 @@ public class TranslateActivity extends AppCompatActivity {
             crud.insertWord(new Word(1, word, " ", " "));
         }
 
-
         if(isFavorite==true){
             fav.setIcon(R.drawable.favorite);
             //Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
@@ -71,15 +70,13 @@ public class TranslateActivity extends AppCompatActivity {
                 switch(item.getItemId()){
                     case R.id.favorite:
                         boolean mstate = item.isChecked();
-                        if(mstate==true){
+                        if(mstate==false){
                             item.setChecked(!mstate);
                             item.setIcon(R.drawable.favorite);
                             Word temp =new Word();
                             temp.setWord(word);
-                            temp.setMean("mean");
-                            temp.setExamp("example");
                             crud.updateFavorite(temp,1);
-                           // Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
                         }
                         else{
                             item.setChecked(!mstate);
@@ -87,7 +84,7 @@ public class TranslateActivity extends AppCompatActivity {
                             Word temp =new Word();
                             temp.setWord(word);
                             crud.updateFavorite(temp,0);
-                            //Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case R.id.search:
@@ -101,44 +98,10 @@ public class TranslateActivity extends AppCompatActivity {
         });
 
     }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu,menu);
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        // Toast.makeText(MainActivity.this,"selected",Toa)
-//        switch (item.getItemId()){
-//            case R.id.menuSetting:
-//                Toast.makeText(TranslateActivity.this,"Setting selected",Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.menuSearch:
-//                Toast.makeText(TranslateActivity.this,"Search selected",Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.menuExit:
-//                TranslateActivity.this.finish();
-//                break;
-//            case android.R.id.home:
-//                // todo: goto back activity from here
-//                finish();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//
-//
-//        return super.onOptionsItemSelected(item);
-//    }
     private String dictionaryEntries(String word) {
         final String language = "en-gb";
-
-//        final String fields = "defintions";
-//        final String strictMatch = "false";
         final String word_id = word.toLowerCase();
-        return "https://od-api.oxforddictionaries.com:443/api/v2/entries/" + language + "/" + word_id ;//+ "?" + "fields=" + fields + "&strictMatch=" + strictMatch;
+        return "https://od-api.oxforddictionaries.com:443/api/v2/entries/" + language + "/" + word_id ;
     }
 
 }

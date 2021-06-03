@@ -93,7 +93,6 @@ public class Fragment_Home1 extends Fragment {
     }
     public void requestApiButton(View v){
         if(etSearch.getText().toString().length()>0) {
-
             String word = etSearch.getText().toString().trim();
             Intent intent = new Intent(getActivity(), TranslateActivity.class);
             intent.putExtra("word", word);
