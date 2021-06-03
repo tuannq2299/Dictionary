@@ -79,7 +79,7 @@ public class FavoriteActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 CRUD db = new CRUD(FavoriteActivity.this);
                 if(db.deleteFavoriteWord(arrW.get(position).getWord())){
-                    Toast.makeText(FavoriteActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(FavoriteActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
                     arrW.remove(position);
                     wordListViewAdapter.notifyDataSetChanged();
                 }

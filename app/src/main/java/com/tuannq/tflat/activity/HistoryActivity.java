@@ -101,7 +101,7 @@ public class HistoryActivity extends AppCompatActivity {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     if(crud.delete(arrP.get(position).getInputParagraph())){
-                        Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
+                       //Toast.makeText(HistoryActivity.this, "Deleted!", Toast.LENGTH_LONG).show();
                         arrP.remove(position);
                         paragraphAdapter.notifyDataSetChanged();
                     }

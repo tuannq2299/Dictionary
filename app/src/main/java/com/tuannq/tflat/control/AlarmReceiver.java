@@ -18,7 +18,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Random rd= new Random();
         Word w=listWords.get(rd.nextInt(listWords.size()));
         NotificationHelper helper = new NotificationHelper(context);
-        Notification.Builder builder = helper.getNotiChannel(w.getWord(),"YOUR FAVORITE WORD");
+        Notification.Builder builder = helper.getNotiChannel(w.getWord(),w.getMean());
         helper.getManager().notify(1,builder.build());
     }
 }

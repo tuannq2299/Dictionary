@@ -14,9 +14,11 @@ public class CRUD {
     private SqliConnection database;
     public CRUD(Context c) {
         database = new SqliConnection(c, "tflat.sqlite", null, 1);
-        database.queryData("CREATE TABLE IF NOT EXISTS historyWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
-        database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(255), examp VARCHAR(255))");
-//        database.queryData("drop table questions");
+        database.queryData("CREATE TABLE IF NOT EXISTS historyWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(10000), examp VARCHAR(10000))");
+        database.queryData("CREATE TABLE IF NOT EXISTS favoriteWords(id INTEGER PRIMARY KEY AUTOINCREMENT, word VARCHAR(255) UNIQUE, mean VARCHAR(10000), examp VARCHAR(10000))");
+//        database.queryData("drop table historyword");
+//        database.queryData("drop table historyWords");
+//        database.queryData("drop table favoriteWords");
         database.queryData("CREATE TABLE IF NOT EXISTS questions(id INTEGER PRIMARY KEY AUTOINCREMENT, question VARCHAR(1000), a VARCHAR(255), b VARCHAR(255)" +
                 ", c VARCHAR(255), d VARCHAR(255), rs VARCHAR(255), _group varchar(1000))");
 

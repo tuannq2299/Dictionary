@@ -25,6 +25,16 @@ public class TranslateActivity extends AppCompatActivity {
     MaterialToolbar topAppBar;
     CRUD crud;
     boolean isFavorite;
+    Word w;
+
+    public Word getW() {
+        return w;
+    }
+
+    public void setW(Word w) {
+        this.w = w;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +46,7 @@ public class TranslateActivity extends AppCompatActivity {
         tvWord.setText(word);
         url = dictionaryEntries(word);
         topAppBar = findViewById(R.id.topAppBar);
-        DictionaryRequest dr = new DictionaryRequest(tvMeaning);
+        DictionaryRequest dr = new DictionaryRequest(tvMeaning,this,word);
         dr.execute(url);
  //       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         topAppBar.setTitle(tvWord.getText().toString());
@@ -52,11 +62,11 @@ public class TranslateActivity extends AppCompatActivity {
         isFavorite = crud.checkFavorite(word);
 
 //        Kiem tra xem tu da co trong lich su chua va luu vao lich su
-        if(crud.findWord(word).getWord().equals(word)){
-
-        }else{
-            crud.insertWord(new Word(1, word, " ", " "));
-        }
+//        if(crud.findWord(word).getWord().equals(word)){
+//
+//        }else{
+//            crud.insertWord(new Word(1, word, " ", " "));
+//        }
 
         if(isFavorite==true){
             fav.setIcon(R.drawable.favorite);
@@ -75,8 +85,7 @@ public class TranslateActivity extends AppCompatActivity {
                         if(mstate==false){
                             item.setChecked(!mstate);
                             item.setIcon(R.drawable.favorite);
-                            Word temp =new Word();
-                            temp.setWord(word);
+                            Word temp =w;
                             crud.updateFavorite(temp,1);
                             isFavorite=item.isChecked();
                             //Toast.makeText(TranslateActivity.this,"checked",Toast.LENGTH_SHORT).show();
@@ -84,8 +93,7 @@ public class TranslateActivity extends AppCompatActivity {
                         else{
                             item.setChecked(!mstate);
                             item.setIcon(R.drawable.no_favorite);
-                            Word temp =new Word();
-                            temp.setWord(word);
+                            Word temp =w;
                             crud.updateFavorite(temp,0);
                             isFavorite=item.isChecked();
                            // Toast.makeText(TranslateActivity.this,"unchecked",Toast.LENGTH_SHORT).show();

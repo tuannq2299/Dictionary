@@ -2,8 +2,11 @@ package com.tuannq.tflat.control;
 
 import android.os.AsyncTask;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.tuannq.tflat.Model.Word;
+import com.tuannq.tflat.activity.TranslateActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,8 +22,12 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
     final String app_key = "a68b0b254a7d42f295118179935bf538";
     String myURL;
     TextView tv;
-    public DictionaryRequest(TextView tv) {
+    TranslateActivity context;
+    String word;
+    public DictionaryRequest(TextView tv, TranslateActivity context, String w) {
         this.tv= tv;
+        this.context=context;
+        this.word=w;
     }
 
 
@@ -73,9 +80,15 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
             JSONArray ex = temp2.getJSONArray("examples");
             JSONArray syn = temp2.getJSONArray("synonyms");
             String list_ex="";
+            String eg="";
             for(int i=0;i<ex.length();i++){
+
                 String example=ex.getJSONObject(i).getString("text");
+                if(i==0){
+                    eg=example;
+                }
                 list_ex= list_ex +"- " + example + "\n";
+                //Toast.makeText(context,eg,Toast.LENGTH_SHORT).show();
             }
 
             String list_syn="";
@@ -86,14 +99,27 @@ public class DictionaryRequest extends AsyncTask<String,Integer,String>{
 
             String rs1;
             rs1 = def.getString(0);
+            rs1=rs1.replace("'","");
+            eg=eg.replace("'","");
 
 //            Log.d("temp","Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
-            tv.setText("Defintion:\n"+rs1+"\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
+            CRUD crud=new CRUD(context);
+            Word w=new Word();
+            w.setWord(word);
+            w.setMean(rs1);
+            w.setExamp(eg);
+            context.setW(w);
+            if(crud.findWord(word).getWord().equals(word)){
+
+            }else{
+                crud.insertWord(new Word(1, word, rs1, eg));
+            }
+            tv.setText("Defintion:\n"+rs1+"\n\nExample:\n"+list_ex+"\nSynonysm:\n"+list_syn);
 
 
         }
         catch(Exception e){
-            tv.setText("NO WORD!");
+            //tv.setText("NO WORD!");
             e.printStackTrace();
         }
 

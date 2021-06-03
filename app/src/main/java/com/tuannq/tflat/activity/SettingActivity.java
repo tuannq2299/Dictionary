@@ -47,7 +47,8 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 if(isChecked){
-                    long interval = 86400000;
+                    //long interval = 86400000;
+                    long interval = 60000;
                     manager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime()+interval,interval,alarmIntent);
                     editor.putBoolean("switchNoti",true).apply();
                 }
